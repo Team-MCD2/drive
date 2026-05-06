@@ -1,0 +1,29 @@
+{
+  "name": "C CHEZ TOÎT - Couvreur Toulouse",
+  "short_name": "C CHEZ TOÎT",
+  "description": "Artisan couvreur, demoussage et nettoyage de toiture a Toulouse et alentours.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "150x150",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/wp-content/uploads/2025/08/logo-ccheztoit-blanc-scaled-1024x1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#EA559D",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "lang": "fr-FR",
+  "categories": ["business", "lifestyle"]
+}

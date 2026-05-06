@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      html, body, #mapDiv {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mapDiv"></div>
+      
+    <script nonce="ivNcgV55qJ9pxev8bEDTGg">
+      function onEmbedLoad() {
+        initEmbed([null,null,null,null,null,[[[2,"spotlit",null,null,null,null,null,[null,null,null,null,null,null,null,null,null,null,11,null,[null,null,null,null,null,null,null,null,null,null,null,null,null,1]]]],null,null,[[null,null,null,null,null,null,null,null,null,null,null,null,null,[[["1346219798777409499","17550795751149126001"],"/g/11c19763wr",null,[435683711,14152236],null,null,null,1,null,null,null,null,null,null,"gcid:compound_building"],0,null,null,null,0,null,0]]]],null,["en_US"],[null,null,null,"/maps/api/js/ApplicationService.GetEntityDetails","/maps/embed/upgrade204",null,"/maps/embed/record204"],null,null,null,null,null,null,null,null,"EJ_7ae6VDKyZkdUP_4m_kQs",null,null,null,[[[2890.832516960985,1.4152236,43.5683711],[0,0,0],null,13.10000038146973],16,0,[["0x12aebbc63fb9afdb:0xf390f3bf60adc171","244 Rte de Seysses, 31100 Toulouse",[43.5683711,1.4152236]],"244 Rte de Seysses",["31100 Toulouse"],null,null,null,null,null,null,null,null,null,"Building","244 Rte de Seysses, 31100 Toulouse",null,null,null,null,null,null,null,null,null,null,1,null,null,"ChIJ26-5P8a7rhIRccGtYL_zkPM",null,null,"0ahUKEwju3fP-uqWUAxWsTKQEHf_EL7IQ8BcIAygA"]],null,null,null,0,null,null,null,null,null,null,[1]]);
+      }
+      function onApiLoad() {
+        var embed = document.createElement('script');
+        embed.src = "https://maps.gstatic.com/maps-api-v3/embed/js/64/12d/init_embed.js";
+        document.body.appendChild(embed);
+      }
+    </script>
+    <link rel="preload" href="https://maps.gstatic.com/maps-api-v3/embed/js/64/12d/init_embed.js" nonce="ivNcgV55qJ9pxev8bEDTGg" as="script" />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmL18misQw9KdwqGaw3zHkitj8vG6QF2Y&amp;paint_origin=&amp;libraries=geometry,search&amp;v=weekly&amp;loading=async&amp;language=en_US&amp;callback=onApiLoad" nonce="ivNcgV55qJ9pxev8bEDTGg" async defer></script>
+  </body>
+</html>

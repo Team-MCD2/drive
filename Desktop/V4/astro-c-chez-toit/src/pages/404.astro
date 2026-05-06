@@ -1,0 +1,186 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Page non trouvée - C CHEZ TOÎT';
+const description = 'La page que vous recherchez n\'existe pas ou a été déplacée.';
+const bodyClass = 'error-404 not-found';
+const bodyAttrs = {
+  itemscope: 'itemscope',
+  itemtype: 'https://schema.org/WebPage'
+};
+---
+
+<Layout title={title} description={description} htmlLang="fr-FR" bodyClass={bodyClass} bodyAttrs={bodyAttrs}>
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <main id="main-content" class="site-main" role="main">
+    <section class="error-404 not-found">
+      <div class="page-content" style="text-align: center; padding: 80px 20px; max-width: 800px; margin: 0 auto;">
+        <h1 style="font-size: 120px; font-weight: 700; color: #EA559D; margin: 0; line-height: 1;">404</h1>
+        <h2 style="font-size: 32px; margin: 20px 0; color: #0F172A;">Page non trouvée</h2>
+        <p style="font-size: 18px; color: #454F5E; margin-bottom: 40px; line-height: 1.6;">
+          Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
+          <br />Nous vous invitons à retourner à l'accueil ou à utiliser notre menu de navigation.
+        </p>
+        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+          <a
+            href="/"
+            style="
+              display: inline-block;
+              padding: 16px 32px;
+              background: linear-gradient(135deg, #EA559D 0%, #f0b7d5 100%);
+              color: white;
+              text-decoration: none;
+              border-radius: 50px;
+              font-weight: 600;
+              transition: all 0.3s ease;
+              box-shadow: 0 4px 20px rgba(234, 85, 157, 0.4);
+            "
+            onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 25px rgba(234, 85, 157, 0.5)'"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(234, 85, 157, 0.4)'"
+          >
+            Retour à l'accueil
+          </a>
+          <a
+            href="/contact"
+            style="
+              display: inline-block;
+              padding: 16px 32px;
+              background: #0F172A;
+              color: white;
+              text-decoration: none;
+              border-radius: 50px;
+              font-weight: 600;
+              transition: all 0.3s ease;
+              box-shadow: 0 4px 20px rgba(15, 23, 42, 0.3);
+            "
+            onmouseover="this.style.transform='translateY(-2px)'; this.style.background='#EA559D'"
+            onmouseout="this.style.transform='translateY(0)'; this.style.background='#0F172A'"
+          >
+            Nous contacter
+          </a>
+        </div>
+
+        <!-- Helpful Links -->
+        <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid #e5e7eb;">
+          <h3 style="font-size: 20px; margin-bottom: 20px; color: #0F172A;">Vous cherchez peut-être :</h3>
+          <ul style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
+            <li>
+              <a
+                href="/services"
+                style="
+                  display: inline-block;
+                  padding: 10px 20px;
+                  background: #FCEEF5;
+                  color: #EA559D;
+                  text-decoration: none;
+                  border-radius: 25px;
+                  font-weight: 500;
+                  transition: all 0.3s ease;
+                "
+                onmouseover="this.style.background='#EA559D'; this.style.color='white'"
+                onmouseout="this.style.background='#FCEEF5'; this.style.color='#EA559D'"
+              >
+                Nos Services
+              </a>
+            </li>
+            <li>
+              <a
+                href="/projets"
+                style="
+                  display: inline-block;
+                  padding: 10px 20px;
+                  background: #FCEEF5;
+                  color: #EA559D;
+                  text-decoration: none;
+                  border-radius: 25px;
+                  font-weight: 500;
+                  transition: all 0.3s ease;
+                "
+                onmouseover="this.style.background='#EA559D'; this.style.color='white'"
+                onmouseout="this.style.background='#FCEEF5'; this.style.color='#EA559D'"
+              >
+                Nos Projets
+              </a>
+            </li>
+            <li>
+              <a
+                href="/zone/toulouse"
+                style="
+                  display: inline-block;
+                  padding: 10px 20px;
+                  background: #FCEEF5;
+                  color: #EA559D;
+                  text-decoration: none;
+                  border-radius: 25px;
+                  font-weight: 500;
+                  transition: all 0.3s ease;
+                "
+                onmouseover="this.style.background='#EA559D'; this.style.color='white'"
+                onmouseout="this.style.background='#FCEEF5'; this.style.color='#EA559D'"
+              >
+                Zone d'intervention
+              </a>
+            </li>
+            <li>
+              <a
+                href="/a-propos-de-c-chez-toit"
+                style="
+                  display: inline-block;
+                  padding: 10px 20px;
+                  background: #FCEEF5;
+                  color: #EA559D;
+                  text-decoration: none;
+                  border-radius: 25px;
+                  font-weight: 500;
+                  transition: all 0.3s ease;
+                "
+                onmouseover="this.style.background='#EA559D'; this.style.color='white'"
+                onmouseout="this.style.background='#FCEEF5'; this.style.color='#EA559D'"
+              >
+                À propos
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #EA559D;
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      z-index: 10000;
+      transition: top 0.3s ease;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    @media (max-width: 768px) {
+      .page-content {
+        padding: 40px 20px !important;
+      }
+
+      h1 {
+        font-size: 80px !important;
+      }
+
+      h2 {
+        font-size: 24px !important;
+      }
+
+      p {
+        font-size: 16px !important;
+      }
+    }
+  </style>
+</Layout>

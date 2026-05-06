@@ -1,0 +1,268 @@
+---
+// Visual Enhancements: Scroll animations, floating CTA, counters
+---
+
+<!-- AOS (Animate On Scroll) CSS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+<!-- Scroll Progress Bar -->
+<style>
+  .scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #EA559D 0%, #f0b7d5 100%);
+    z-index: 10001;
+    transition: width 0.1s ease-out;
+    box-shadow: 0 2px 10px rgba(234, 85, 157, 0.3);
+  }
+</style>
+
+<!-- Scroll Progress Bar Element -->
+<div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+<!-- Floating CTA Button -->
+<style>
+  .floating-cta {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    background: linear-gradient(135deg, #EA559D 0%, #f0b7d5 100%);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(234, 85, 157, 0.4);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: pulse 2s infinite;
+  }
+
+  .floating-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(234, 85, 157, 0.5);
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 4px 20px rgba(234, 85, 157, 0.4);
+    }
+    50% {
+      box-shadow: 0 4px 30px rgba(234, 85, 157, 0.6);
+    }
+  }
+
+  .floating-cta-icon {
+    font-size: 20px;
+  }
+
+  /* Scroll to top button */
+  .scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9998;
+    width: 50px;
+    height: 50px;
+    background: #0F172A;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    margin-bottom: 80px;
+  }
+
+  .scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .scroll-to-top:hover {
+    background: #EA559D;
+    transform: translateY(-3px);
+  }
+
+  /* Counter animation styles */
+  .counter-number {
+    font-weight: 700;
+    color: #EA559D;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Enhanced testimonial cards */
+  .elementor-testimonial-wrapper {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .elementor-testimonial-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Zone card hover enhancement */
+  .zone-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .zone-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Button hover effects */
+  .ast-button, .elementor-button {
+    transition: all 0.3s ease !important;
+  }
+
+  .ast-button:hover, .elementor-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(234, 85, 157, 0.3) !important;
+  }
+</style>
+
+<!-- Floating CTA -->
+<a href="/contact" class="floating-cta" data-aos="fade-left" data-aos-delay="500">
+  <span class="floating-cta-icon">📞</span>
+  <span>Devis Gratuit</span>
+</a>
+
+<!-- Scroll to Top Button -->
+<button class="scroll-to-top" id="scrollTopBtn" aria-label="Retour en haut">
+  ↑
+</button>
+
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script is:inline>
+  // Initialize AOS
+  AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true,
+    offset: 100
+  });
+
+  // Scroll progress bar functionality
+  const scrollProgressBar = document.getElementById('scrollProgressBar');
+  
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    scrollProgressBar.style.width = scrollPercent + '%';
+  });
+
+  // Add AOS animation classes to existing elements programmatically
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animate sections
+    document.querySelectorAll('section.elementor-section').forEach((section, index) => {
+      section.setAttribute('data-aos', 'fade-up');
+      section.setAttribute('data-aos-delay', (index * 100).toString());
+    });
+
+    // Animate icon boxes
+    document.querySelectorAll('.elementor-icon-box').forEach((box, index) => {
+      box.setAttribute('data-aos', 'zoom-in');
+      box.setAttribute('data-aos-delay', (index * 150).toString());
+    });
+
+    // Animate testimonials
+    document.querySelectorAll('.elementor-testimonial-wrapper').forEach((testimonial, index) => {
+      testimonial.setAttribute('data-aos', 'fade-up');
+      testimonial.setAttribute('data-aos-delay', (index * 100).toString());
+    });
+
+    // Animate headings
+    document.querySelectorAll('h1, h2, h3').forEach(heading => {
+      if (!heading.closest('.elementor-icon-box')) {
+        heading.setAttribute('data-aos', 'fade-down');
+      }
+    });
+
+    // Animate images
+    document.querySelectorAll('img').forEach(img => {
+      if (!img.closest('.elementor-icon')) {
+        img.setAttribute('data-aos', 'fade-in');
+      }
+    });
+
+    // Reinitialize AOS after adding attributes
+    setTimeout(() => AOS.refresh(), 100);
+  });
+
+  // Scroll to top button functionality
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      scrollTopBtn.classList.add('visible');
+    } else {
+      scrollTopBtn.classList.remove('visible');
+    }
+  });
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // Counter animation for numbers
+  const animateCounters = () => {
+    const counters = document.querySelectorAll('.counter-number');
+    counters.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-target')) || parseInt(counter.textContent);
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+
+      const updateCounter = () => {
+        current += step;
+        if (current < target) {
+          counter.textContent = Math.ceil(current);
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target;
+        }
+      };
+
+      updateCounter();
+    });
+  };
+
+  // Trigger counter animation when in view
+  const observerOptions = {
+    threshold: 0.5
+  };
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters();
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.elementor-counter-number').forEach(el => {
+    el.classList.add('counter-number');
+    counterObserver.observe(el);
+  });
+</script>

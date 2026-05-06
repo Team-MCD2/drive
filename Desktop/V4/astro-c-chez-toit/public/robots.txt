@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /assets/wp-json/
+Disallow: /assets/feed/
+Disallow: /assets/comments/
+
+# Sitemap
+Sitemap: /sitemap.xml

@@ -1,0 +1,27 @@
+---
+/**
+ * Schema.org BreadcrumbList — passe la liste { name, url }.
+ */
+interface Crumb {
+  name: string;
+  url: string;
+}
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+const SITE = 'https://c-chez-toit.com';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.name,
+    item: c.url.startsWith('http') ? c.url : `${SITE}${c.url}`,
+  })),
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

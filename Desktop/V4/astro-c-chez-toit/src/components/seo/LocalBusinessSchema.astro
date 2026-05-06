@@ -1,0 +1,73 @@
+---
+/**
+ * Schema.org LocalBusiness (sous-type RoofingContractor)
+ * Injecte sur toutes les pages via Layout.
+ */
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'RoofingContractor',
+  '@id': 'https://c-chez-toit.com/#business',
+  name: 'C CHEZ TOÎT',
+  alternateName: 'C Chez Toit',
+  description:
+    "Artisan couvreur et expert en nettoyage de toiture, démoussage, hydrofuge, zinguerie, façade et terrasse à Toulouse et dans toute la Haute-Garonne.",
+  url: 'https://c-chez-toit.com/',
+  image: 'https://c-chez-toit.com/assets/wp-content/uploads/2025/08/logo-ccheztoit-blanc-scaled-1024x1024.png',
+  logo: 'https://c-chez-toit.com/assets/wp-content/uploads/2025/08/logo-ccheztoit-blanc-scaled-1024x1024.png',
+  telephone: '+33-0-00-00-00-00',
+  email: 'contact@c-chez-toit.com',
+  priceRange: '€€',
+  paymentAccepted: ['Cash', 'Credit Card', 'Bank Transfer'],
+  currenciesAccepted: 'EUR',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Toulouse',
+    addressLocality: 'Toulouse',
+    addressRegion: 'Occitanie',
+    postalCode: '31000',
+    addressCountry: 'FR',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 43.6045,
+    longitude: 1.4442,
+  },
+  areaServed: [
+    'Toulouse', 'Blagnac', 'Colomiers', 'Tournefeuille', 'Muret',
+    'Balma', 'L’Union', 'Ramonville-Saint-Agne', 'Cugnaux',
+    'Plaisance-du-Touch', 'Castanet-Tolosan', 'Saint-Orens-de-Gameville',
+    'Haute-Garonne',
+  ],
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '18:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Saturday',
+      opens: '09:00',
+      closes: '12:00',
+    },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Services de toiture & nettoyage',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Démoussage de toiture' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Nettoyage haute pression' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Traitement hydrofuge' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Zinguerie & gouttières' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Réparation de toiture' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Nettoyage de façade' } },
+    ],
+  },
+  sameAs: [
+    'https://www.facebook.com/c-chez-toit',
+    'https://www.instagram.com/c-chez-toit',
+  ],
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

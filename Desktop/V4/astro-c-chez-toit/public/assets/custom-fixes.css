@@ -1,0 +1,349 @@
+/* ============================================================
+   custom-fixes.css
+   Patches CSS pour le clone WordPress/Astra/Elementor.
+   Charge en DERNIER pour gagner contre les regles du theme.
+   ============================================================ */
+
+/* --- 1. Header dedouble (desktop + mobile + menu mobile ouvert) ---
+   Astra serie sa CSS responsive de maniere fragile dans le clone : les
+   blocs de header desktop ET mobile sont rendus simultanement parce que
+   les regles @media qui en cachaient un sont parfois absentes du
+   dump CSS. On reapplique manuellement le comportement attendu. */
+
+/* Desktop (>= 922px) : on cache le header mobile et on montre le desktop */
+@media (min-width: 922px) {
+  body .ast-mobile-header-wrap,
+  body .ast-mobile-header-section,
+  body .ast-mobile-popup-drawer,
+  body #ast-mobile-header,
+  body .main-header-bar-wrap.ast-mobile-header-wrap {
+    display: none !important;
+  }
+
+  body .ast-desktop-header,
+  body .ast-desktop-header-content,
+  body #masthead .main-header-bar-wrap:not(.ast-mobile-header-wrap),
+  body .ast-primary-header-bar {
+    display: block;
+  }
+}
+
+/* Mobile (<= 921px) : on cache le header desktop et on montre le mobile */
+@media (max-width: 921px) {
+  body .ast-desktop-header,
+  body .ast-desktop-header-content,
+  body .main-header-bar-wrap:not(.ast-mobile-header-wrap):not(.ast-mobile-header-section) {
+    display: none !important;
+  }
+
+  body .ast-mobile-header-wrap,
+  body .ast-mobile-header-section {
+    display: block;
+  }
+}
+
+/* Le menu mobile (drawer/popup) doit etre cache par defaut a tous les
+   breakpoints, et n'apparait QUE quand .toggled / .ast-mobile-popup-drawer.active */
+body .ast-mobile-popup-drawer:not(.active),
+body #ast-mobile-header .main-header-menu:not(.toggle-on),
+body .ast-builder-menu-mobile .main-header-menu:not(.toggle-on) {
+  display: none !important;
+}
+
+/* --- 2. Bouton "Devis gratuit !" double dans le header desktop ---
+   Astra rend deux variantes (custom button + menu link). On garde
+   uniquement la version stylisee. */
+body .ast-builder-button-wrap a.menu-link {
+  display: none !important;
+}
+
+/* --- 3. Hover/visited link colors dans la section ZoneIntervention ---
+   Astra applique des regles globales sur a:hover qui peuvent ecraser
+   la couleur des cards. On force la cohérence avec le composant. */
+.cct-zone-card:visited,
+.cct-zone-card:link {
+  color: #000422;
+}
+
+/* --- 4. Visual Enhancements for better UX --- */
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Improve button hover effects across the site */
+.ast-button,
+.elementor-button,
+.elementor-element.elementor-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.ast-button:hover,
+.elementor-button:hover,
+.elementor-element.elementor-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(234, 85, 157, 0.35) !important;
+}
+
+/* Enhance testimonial cards with better hover effects */
+.elementor-testimonial-wrapper {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.elementor-testimonial-wrapper:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Improve icon box hover effects */
+.elementor-icon-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.elementor-icon-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.elementor-icon-box .elementor-icon {
+  transition: transform 0.3s ease;
+}
+
+.elementor-icon-box:hover .elementor-icon {
+  transform: scale(1.1);
+}
+
+/* Enhance section backgrounds with subtle gradients */
+.elementor-section:not([class*="background"]) {
+  background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+}
+
+/* Improve form input styling */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #EA559D !important;
+  box-shadow: 0 0 0 3px rgba(234, 85, 157, 0.1) !important;
+}
+
+/* Enhance navigation menu items */
+.main-header-menu a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.main-header-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #EA559D;
+  transition: width 0.3s ease;
+}
+
+.main-header-menu a:hover::after {
+  width: 100%;
+}
+
+/* Improve image hover effects */
+img:not(.elementor-icon img):not(.custom-logo) {
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+img:not(.elementor-icon img):not(.custom-logo):hover {
+  transform: scale(1.02);
+  filter: brightness(1.05);
+}
+
+/* Add subtle pulse animation to CTA buttons */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(234, 85, 157, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(234, 85, 157, 0);
+  }
+}
+
+.ast-button[href*="contact"],
+.elementor-button[href*="contact"] {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Improve zone card visual hierarchy */
+.cct-zone-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cct-zone-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Add loading skeleton animation for better perceived performance */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+/* Improve footer visual appeal */
+.site-footer {
+  background: linear-gradient(135deg, #0F172A 0%, #1e293b 100%);
+}
+
+/* Enhance social media icons hover */
+.elementor-social-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.elementor-social-icon:hover {
+  transform: translateY(-3px) scale(1.1);
+}
+
+/* --- 5. Accessibility Skip Link --- */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #EA559D;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 10000;
+  transition: top 0.3s ease;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid #0F172A;
+  outline-offset: 2px;
+}
+
+/* --- 6. Footer Design (DA rose clair) --- */
+
+/* Section principale du footer */
+#colophon .elementor-element-e2153a2 {
+  background: linear-gradient(180deg, #fceef5 0%, #f9e5f0 100%) !important;
+  padding: 48px 0 !important;
+}
+
+/* Supprimer les fonds blancs des colonnes/widgets du footer */
+#colophon .elementor-element-e2153a2 .elementor-column,
+#colophon .elementor-element-e2153a2 .elementor-widget-wrap,
+#colophon .elementor-element-e2153a2 .elementor-element,
+#colophon .elementor-element-e2153a2 .elementor-widget-container,
+#colophon .elementor-element-e2153a2 .elementor-container {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Titres de colonnes */
+#colophon .elementor-element-e2153a2 h4.elementor-heading-title {
+  color: #0F172A !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  margin-bottom: 14px !important;
+}
+
+/* Texte du footer */
+#colophon .elementor-element-e2153a2 p,
+#colophon .elementor-element-e2153a2 span {
+  color: #454F5E !important;
+  font-size: 0.9rem !important;
+  line-height: 1.7 !important;
+}
+
+/* Liens */
+#colophon .elementor-element-e2153a2 a,
+#colophon .elementor-element-e2153a2 .elementor-icon-list-text {
+  color: #454F5E !important;
+  text-decoration: none !important;
+  transition: color 0.3s ease !important;
+  font-size: 0.9rem !important;
+}
+
+#colophon .elementor-element-e2153a2 a:hover {
+  color: #EA559D !important;
+}
+
+/* Espacement des items de liste */
+#colophon .elementor-element-e2153a2 .elementor-icon-list-item {
+  padding: 3px 0 !important;
+}
+
+/* Icônes (téléphone, email) */
+#colophon .elementor-element-e2153a2 .elementor-icon-list-icon i {
+  color: #EA559D !important;
+}
+
+/* Texte gras */
+#colophon .elementor-element-e2153a2 strong {
+  color: #0F172A !important;
+}
+
+/* Icônes réseaux sociaux */
+#colophon .elementor-element-e2153a2 .elementor-social-icon {
+  background: rgba(234, 85, 157, 0.12) !important;
+  color: #EA559D !important;
+  border: 1px solid rgba(234, 85, 157, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+#colophon .elementor-element-e2153a2 .elementor-social-icon:hover {
+  background: #EA559D !important;
+  color: #ffffff !important;
+  border-color: #EA559D !important;
+}
+
+/* Bouton "Faire un devis" */
+#colophon .elementor-element-e2153a2 .elementor-button {
+  background: #EA559D !important;
+  color: #ffffff !important;
+  border-radius: 50px !important;
+  padding: 10px 22px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+#colophon .elementor-element-e2153a2 .elementor-button:hover {
+  background: #d43d87 !important;
+  box-shadow: 0 6px 20px rgba(234, 85, 157, 0.35) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Barre copyright */
+#colophon .elementor-element-5550c1b {
+  background: #f0d8e8 !important;
+  padding: 12px 0 !important;
+  border-top: 1px solid rgba(234, 85, 157, 0.2) !important;
+}
+
+#colophon .elementor-element-5550c1b span,
+#colophon .elementor-element-5550c1b a {
+  color: #64748b !important;
+  font-size: 0.85rem !important;
+}
+
+#colophon .elementor-element-5550c1b a:hover {
+  color: #EA559D !important;
+}

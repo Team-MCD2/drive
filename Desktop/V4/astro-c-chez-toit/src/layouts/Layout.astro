@@ -1,0 +1,106 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BaseHead from '../components/BaseHead.astro';
+import LocalBusinessSchema from '../components/seo/LocalBusinessSchema.astro';
+import VisualEnhancements from '../components/VisualEnhancements.astro';
+
+interface Props {
+  title?: string;
+  htmlLang?: string;
+  bodyClass?: string;
+  bodyAttrs?: Record<string, string>;
+  headHtml?: string;
+  preHtml?: string;
+  postHtml?: string;
+  /** Si true, n'inclut que BaseHead (CSS Astra + fonts). */
+  useBaseHead?: boolean;
+  /** SEO : meta description (50-160 chars). */
+  description?: string;
+  /** SEO : Open Graph / Twitter image (URL absolue ou /assets/...). */
+  ogImage?: string;
+  /** SEO : type Open Graph (website, article...). */
+  ogType?: string;
+  /** SEO : URL canonique (par defaut deduite de Astro.url). */
+  canonical?: string;
+}
+
+const SITE_NAME = 'C CHEZ TOÎT';
+const DEFAULT_OG_IMAGE = '/assets/wp-content/uploads/2025/08/logo-ccheztoit-blanc-scaled-1024x1024.png';
+
+const {
+  title = '',
+  htmlLang = 'fr-FR',
+  bodyClass = '',
+  bodyAttrs = {},
+  headHtml = '',
+  preHtml = '',
+  postHtml = '',
+  useBaseHead = false,
+  description = '',
+  ogImage = DEFAULT_OG_IMAGE,
+  ogType = 'website',
+  canonical,
+} = Astro.props;
+
+const canonicalHref = canonical ?? Astro.url.pathname;
+---
+<!doctype html>
+<html lang={htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+
+    {/* === SEO de base === */}
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonicalHref} />
+    <meta name="theme-color" content="#EA559D" />
+    <meta name="format-detection" content="telephone=no" />
+
+    {/* === Open Graph === */}
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="fr_FR" />
+
+    {/* === Twitter Card === */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content={ogImage} />
+
+    {/* === Performance === */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+    {/* === PWA / icons === */}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    {useBaseHead && <BaseHead />}
+    <Fragment set:html={headHtml} />
+
+    {/* Schema.org LocalBusiness (RoofingContractor) - global */}
+    <LocalBusinessSchema />
+
+    {/* Fix CSS charge en dernier pour ecraser le theme sur les bugs visuels */}
+    <link rel="stylesheet" href="/assets/custom-fixes.css" />
+  </head>
+  <body class={bodyClass} {...bodyAttrs}>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    <Fragment set:html={preHtml} />
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+    <Fragment set:html={postHtml} />
+    <VisualEnhancements />
+  </body>
+</html>

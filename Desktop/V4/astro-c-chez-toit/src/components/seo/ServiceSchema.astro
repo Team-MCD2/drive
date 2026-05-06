@@ -1,0 +1,63 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  provider?: string;
+  areaServed?: string[];
+  hasOfferCatalog?: {
+    name: string;
+    itemOffered: {
+      name: string;
+      description: string;
+    }[];
+  };
+}
+
+const {
+  name,
+  description,
+  provider = "C CHEZ TOÎT",
+  areaServed = ["Toulouse", "Haute-Garonne", "Occitanie"],
+  hasOfferCatalog,
+} = Astro.props;
+
+const providerName = provider;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": name,
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": providerName,
+    "image": "https://c-chez-toit.com/wp-content/uploads/2025/08/logo-ccheztoit-blanc-scaled.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Toulouse",
+      "addressRegion": "Haute-Garonne",
+      "addressCountry": "FR"
+    },
+    "priceRange": "€€"
+  },
+  "areaServed": areaServed.map(area => ({
+    "@type": "City",
+    "name": area
+  })),
+  ...(hasOfferCatalog && {
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": hasOfferCatalog.name,
+      "itemListElement": hasOfferCatalog.itemOffered.map((item, index) => ({
+        "@type": "Offer",
+        "position": index + 1,
+        "itemOffered": {
+          "@type": "Service",
+          "name": item.name,
+          "description": item.description
+        }
+      }))
+    }
+  })
+})} />

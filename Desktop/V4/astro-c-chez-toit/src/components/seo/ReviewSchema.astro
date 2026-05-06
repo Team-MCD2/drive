@@ -1,0 +1,53 @@
+---
+interface Props {
+  itemReviewed: string;
+  reviews: {
+    author: string;
+    reviewRating: {
+      ratingValue: number;
+      bestRating?: number;
+    };
+    reviewBody?: string;
+    datePublished?: string;
+  }[];
+  aggregateRating?: {
+    ratingValue: number;
+    reviewCount: number;
+    bestRating?: number;
+  };
+}
+
+const {
+  itemReviewed,
+  reviews,
+  aggregateRating,
+} = Astro.props;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": itemReviewed,
+  ...(aggregateRating && {
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": aggregateRating.ratingValue,
+      "reviewCount": aggregateRating.reviewCount,
+      "bestRating": aggregateRating.bestRating || 5
+    }
+  }),
+  "review": reviews.map(review => ({
+    "@type": "Review",
+    "author": {
+      "@type": "Person",
+      "name": review.author
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": review.reviewRating.ratingValue,
+      "bestRating": review.reviewRating.bestRating || 5
+    },
+    ...(review.reviewBody && { "reviewBody": review.reviewBody }),
+    ...(review.datePublished && { "datePublished": review.datePublished })
+  }))
+})} />

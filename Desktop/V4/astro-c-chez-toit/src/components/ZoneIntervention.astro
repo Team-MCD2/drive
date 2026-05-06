@@ -1,0 +1,204 @@
+---
+import { zones } from '../data/zones';
+
+interface Props {
+  title?: string;
+  intro?: string;
+  variant?: 'light' | 'soft';
+}
+
+const {
+  title = "Notre zone d'intervention",
+  intro = "Nous intervenons rapidement dans toute la région toulousaine pour vos urgences et travaux de toiture, zinguerie, démoussage et nettoyage.",
+  variant = 'light',
+} = Astro.props;
+---
+<section id="zones" class={`cct-zones cct-zones--${variant}`}>
+  <div class="cct-zones__bg" aria-hidden="true"></div>
+
+  <div class="cct-zones__container">
+    <header class="cct-zones__header">
+      <span class="cct-zones__eyebrow">
+        <svg width="21" height="8" viewBox="0 0 21 8" fill="none" aria-hidden="true">
+          <path d="M7 0H13L6 8H0L7 0Z" fill="#EA559D" />
+          <path d="M13 0H7L15 8H21L13 0Z" fill="#EA559D" opacity="0.6" />
+        </svg>
+        Zone d'intervention
+      </span>
+      <h2 class="cct-zones__title">{title}</h2>
+      <p class="cct-zones__intro">{intro}</p>
+    </header>
+
+    <ul class="cct-zones__grid" role="list">
+      {zones.map((zone) => (
+        <li>
+          <a class="cct-zone-card" href={`/zone/${zone.slug}`}>
+            <span class="cct-zone-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z" fill="currentColor"/>
+              </svg>
+            </span>
+            <span class="cct-zone-card__name">{zone.name}</span>
+            <span class="cct-zone-card__arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <p class="cct-zones__footnote">
+      Votre commune n'apparaît pas dans la liste ?
+      <a href="/contact">Contactez-nous</a> — nous étudions chaque demande.
+    </p>
+  </div>
+</section>
+
+<style>
+  .cct-zones {
+    position: relative;
+    padding: 96px 20px;
+    font-family: 'Roboto', system-ui, sans-serif;
+    color: #000422;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .cct-zones--light { background: #ffffff; }
+  .cct-zones--soft  { background: linear-gradient(180deg, #fceef5 0%, #ffffff 100%); }
+
+  .cct-zones__bg {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 2px 2px, #EA559D 1px, transparent 0);
+    background-size: 40px 40px;
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .cct-zones__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .cct-zones__header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 56px;
+  }
+
+  .cct-zones__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #EA559D;
+    margin-bottom: 18px;
+  }
+
+  .cct-zones__title {
+    font-family: 'Roboto Slab', 'Roboto', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0 0 18px;
+    color: #000422;
+  }
+  .cct-zones__title :global(strong) { color: #EA559D; }
+
+  .cct-zones__intro {
+    font-size: 17px;
+    line-height: 1.65;
+    color: #454f5e;
+    margin: 0;
+  }
+
+  .cct-zones__grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+  @media (min-width: 640px)  { .cct-zones__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (min-width: 960px)  { .cct-zones__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+  .cct-zone-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    background: #ffffff;
+    border: 1px solid #f1d6e4;
+    border-radius: 18px;
+    color: #000422;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 1px 0 rgba(0, 4, 34, 0.02);
+    transition: transform .25s ease, border-color .25s ease,
+                box-shadow .25s ease, background .25s ease;
+  }
+  .cct-zones--soft .cct-zone-card { background: #ffffff; }
+
+  .cct-zone-card__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fceef5;
+    color: #EA559D;
+    flex-shrink: 0;
+    transition: background .25s ease, color .25s ease, transform .25s ease;
+  }
+  .cct-zone-card__name {
+    flex: 1;
+    font-size: 15px;
+    line-height: 1.2;
+  }
+  .cct-zone-card__arrow {
+    color: #f0b7d5;
+    display: inline-flex;
+    transition: color .25s ease, transform .25s ease;
+  }
+
+  .cct-zone-card:hover,
+  .cct-zone-card:focus-visible {
+    border-color: #EA559D;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px -16px rgba(234, 85, 157, 0.45);
+    outline: none;
+  }
+  .cct-zone-card:hover .cct-zone-card__icon,
+  .cct-zone-card:focus-visible .cct-zone-card__icon {
+    background: #EA559D;
+    color: #ffffff;
+    transform: scale(1.05);
+  }
+  .cct-zone-card:hover .cct-zone-card__arrow,
+  .cct-zone-card:focus-visible .cct-zone-card__arrow {
+    color: #EA559D;
+    transform: translateX(3px);
+  }
+
+  .cct-zones__footnote {
+    text-align: center;
+    margin: 48px 0 0;
+    color: #454f5e;
+    font-size: 15px;
+  }
+  .cct-zones__footnote a {
+    color: #EA559D;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
+  .cct-zones__footnote a:hover { color: #c93d83; }
+</style>
