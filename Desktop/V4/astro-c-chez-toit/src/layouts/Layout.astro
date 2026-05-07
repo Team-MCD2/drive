@@ -78,9 +78,8 @@ const canonicalHref = canonical ?? Astro.url.pathname;
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
     {/* === PWA / icons === */}
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="150x150" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="150x150" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
     {useBaseHead && <BaseHead />}

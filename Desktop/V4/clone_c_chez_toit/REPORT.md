@@ -1,0 +1,55 @@
+# Analyse de https://c-chez-toit.com/
+
+- Pages telechargees : 9
+- Ressources : 184 (css=38, js=15, img=51, font=39)
+- Technos detectees : GTM, WordPress, jQuery
+
+## Polices principales
+- Roboto (176)
+- sans-serif (83)
+- Work Sans (64)
+- Roboto Slab (64)
+- inherit (48)
+- Helvetica (9)
+- eicons (7)
+- Font Awesome 5 Free (5)
+- Font Awesome 5 Brands (4)
+- Courier 10 Pitch (1)
+- Courier (1)
+- monospace (1)
+- Montserrat (1)
+- Helvetica Neue (1)
+- Open Sans (1)
+
+## Couleurs les plus frequentes
+- #f3f3f3 (146)
+- #ffffff (114)
+- #fff (55)
+- #f0b7d5 (46)
+- #000000 (44)
+- #000422 (21)
+- #000 (19)
+- #eeeeee (18)
+- #fafafa (18)
+- #fbfbfb (18)
+- #ea559d (18)
+- #0f172a (18)
+- #454f5e (18)
+- #fceef5 (18)
+- #fad8e9 (18)
+- #140610 (18)
+- #222222 (18)
+- #e65644 (16)
+- #ccc (14)
+- #0274be (11)
+
+## Pages
+- [Accueil - C CHEZ TOÎT](https://c-chez-toit.com/)
+- [À propos - C CHEZ TOÎT](https://c-chez-toit.com/a-propos-de-c-chez-toit/)
+- [Services - C CHEZ TOÎT](https://c-chez-toit.com/services/)
+- [Projets - C CHEZ TOÎT](https://c-chez-toit.com/projets/)
+- [Contact - C CHEZ TOÎT](https://c-chez-toit.com/contact/)
+- [Contact - C CHEZ TOÎT](https://c-chez-toit.com/contact)
+- [Accueil - C CHEZ TOÎT](https://c-chez-toit.com)
+- [Mentions légales - C CHEZ TOÎT](https://c-chez-toit.com/mentions-legales)
+- [Politique de confidentialité - C CHEZ TOÎT](https://c-chez-toit.com/politique-de-confidentialite)

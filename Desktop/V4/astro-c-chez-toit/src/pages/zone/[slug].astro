@@ -80,7 +80,7 @@ const services = [
   title={title}
   description={description}
   useBaseHead={true}
-  bodyClass="cct-zone-page"
+  bodyClass="cct-zone-page wp-singular page-template-default page wp-custom-logo wp-theme-astra ehf-footer ehf-template-astra ehf-stylesheet-astra ast-desktop ast-page-builder-template ast-no-sidebar astra-4.11.11 ast-single-post ast-inherit-site-logo-transparent ast-theme-transparent-header ast-hfb-header ast-normal-title-enabled elementor-default elementor-kit-154"
   ogType="article"
 >
   {/* === Schemas SEO === */}
@@ -280,33 +280,31 @@ const services = [
     padding: 0 20px;
   }
 
-  /* HERO */
+  /* HERO - identique a /projets : image sombre + navbar transparente blanche */
   .cct-zp__hero {
     position: relative;
-    padding: 120px 0 80px;
+    padding: 200px 0 100px;
     overflow: hidden;
     isolation: isolate;
+    margin-top: -120px; /* compense la navbar transparente fixe */
   }
   .cct-zp__hero-bg {
     position: absolute; inset: 0; z-index: -1;
-    background:
-      radial-gradient(60% 80% at 80% 0%, #fceef5 0%, transparent 60%),
-      radial-gradient(50% 70% at 0% 100%, #fad8e9 0%, transparent 60%),
-      #ffffff;
-  }
-  .cct-zp__hero-bg::after {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: radial-gradient(circle at 2px 2px, #EA559D 1px, transparent 0);
-    background-size: 40px 40px;
-    opacity: 0.06;
+    background-image:
+      linear-gradient(rgba(0, 4, 34, 0.55), rgba(0, 4, 34, 0.55)),
+      url('/assets/wp-content/uploads/2025/12/banner-projet-toiture.png');
+    background-size: cover;
+    background-position: center;
   }
 
-  .cct-zp__breadcrumb {
-    display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
-    font-size: 13px; color: #454f5e; margin-bottom: 32px;
+  .cct-zp__hero-inner {
+    text-align: center;
   }
-  .cct-zp__breadcrumb a { color: #454f5e; text-decoration: none; }
+  .cct-zp__breadcrumb {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px;
+    font-size: 13px; color: rgba(255,255,255,0.85); margin-bottom: 32px;
+  }
+  .cct-zp__breadcrumb a { color: rgba(255,255,255,0.85); text-decoration: none; }
   .cct-zp__breadcrumb a:hover { color: #EA559D; }
   .cct-zp__breadcrumb [aria-current] { color: #EA559D; font-weight: 600; }
 
@@ -318,20 +316,21 @@ const services = [
   }
   .cct-zp__eyebrow--center { display: inline-flex; }
 
-  .cct-zp__title {
-    font-size: clamp(34px, 5.5vw, 60px);
+  .cct-zp__hero .cct-zp__title {
+    font-size: clamp(36px, 6vw, 64px);
     font-weight: 700; line-height: 1.1;
-    margin: 0 0 22px; max-width: 18ch;
+    margin: 0 auto 22px; max-width: 22ch;
+    color: #ffffff;
   }
-  .cct-zp__title span { color: #EA559D; }
+  .cct-zp__hero .cct-zp__title span { color: #EA559D; }
 
-  .cct-zp__lead {
-    font-size: 18px; line-height: 1.65; color: #454f5e;
-    max-width: 60ch; margin: 0 0 36px;
+  .cct-zp__hero .cct-zp__lead {
+    font-size: 18px; line-height: 1.65; color: rgba(255,255,255,0.92);
+    max-width: 60ch; margin: 0 auto 36px;
   }
 
   .cct-zp__cta-row {
-    display: flex; flex-wrap: wrap; gap: 14px;
+    display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
   }
 
   .cct-btn {

@@ -347,3 +347,186 @@ img:not(.elementor-icon img):not(.custom-logo):hover {
 #colophon .elementor-element-5550c1b a:hover {
   color: #EA559D !important;
 }
+
+/* ============================================================
+   7. RESPONSIVE MOBILE (< 768px)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  /* --- Généralités --- */
+  body {
+    overflow-x: hidden !important;
+  }
+
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* --- Sections Elementor : 1 colonne en mobile --- */
+  .elementor-section .elementor-container {
+    flex-direction: column !important;
+  }
+
+  .elementor-column {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .elementor-section-boxed .elementor-container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .elementor-section {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* --- Typographie responsive --- */
+  h1.elementor-heading-title {
+    font-size: 1.8rem !important;
+    line-height: 1.2 !important;
+  }
+
+  h2.elementor-heading-title {
+    font-size: 1.5rem !important;
+    line-height: 1.3 !important;
+  }
+
+  h3.elementor-heading-title {
+    font-size: 1.2rem !important;
+  }
+
+  .elementor-widget-text-editor p {
+    font-size: 0.95rem !important;
+    line-height: 1.7 !important;
+  }
+
+  /* --- Boutons pleine largeur sur mobile --- */
+  .elementor-button-wrapper {
+    width: 100% !important;
+  }
+
+  .elementor-button {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 14px 20px !important;
+    font-size: 1rem !important;
+  }
+
+  /* --- Témoignages : 1 par ligne --- */
+  .elementor-testimonial-wrapper {
+    margin-bottom: 24px !important;
+  }
+
+  /* --- Icon box : centré --- */
+  .elementor-icon-box-wrapper {
+    text-align: center !important;
+    padding: 20px 16px !important;
+  }
+
+  .elementor-icon-box-icon {
+    margin: 0 auto 12px !important;
+  }
+
+  /* --- Images hero pleine largeur --- */
+  .elementor-widget-image img {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 8px !important;
+  }
+
+  /* --- ZoneIntervention grid : 1 colonne --- */
+  .cct-zone-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    padding: 0 16px !important;
+  }
+
+  .cct-zone-card {
+    padding: 16px !important;
+  }
+
+  /* --- Formulaire de contact --- */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea,
+  select {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    font-size: 16px !important; /* évite le zoom auto iOS */
+  }
+
+  /* --- Footer colonnes empilées --- */
+  #colophon .elementor-element-e2153a2 .elementor-container {
+    flex-direction: column !important;
+    padding: 0 20px !important;
+  }
+
+  #colophon .elementor-element-e2153a2 .elementor-column {
+    width: 100% !important;
+    margin-bottom: 32px !important;
+  }
+
+  #colophon .elementor-element-e2153a2 {
+    padding: 32px 0 !important;
+  }
+
+  /* --- Barre copyright centrée --- */
+  #colophon .elementor-element-5550c1b .elementor-container {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 6px !important;
+    padding: 0 16px !important;
+  }
+
+  #colophon .elementor-element-5550c1b .elementor-column {
+    width: 100% !important;
+  }
+
+  /* --- Scroll-to-top button position --- */
+  #scrollToTop {
+    bottom: 16px !important;
+    right: 16px !important;
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  /* --- Floating CTA button --- */
+  #floatingCta {
+    bottom: 72px !important;
+    right: 16px !important;
+    font-size: 0.85rem !important;
+    padding: 10px 16px !important;
+  }
+}
+
+/* Tablette (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .elementor-col-25 {
+    width: 50% !important;
+    max-width: 50% !important;
+  }
+
+  .elementor-col-33 {
+    width: 50% !important;
+    max-width: 50% !important;
+  }
+
+  .cct-zone-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  h1.elementor-heading-title {
+    font-size: 2.2rem !important;
+  }
+
+  h2.elementor-heading-title {
+    font-size: 1.8rem !important;
+  }
+}

@@ -4,9 +4,9 @@
   "description": "Artisan couvreur, demoussage et nettoyage de toiture a Toulouse et alentours.",
   "icons": [
     {
-      "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "src": "/favicon.png",
+      "sizes": "150x150",
+      "type": "image/png"
     },
     {
       "src": "/apple-touch-icon.png",
