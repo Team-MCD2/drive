@@ -10,44 +10,16 @@
    les regles @media qui en cachaient un sont parfois absentes du
    dump CSS. On reapplique manuellement le comportement attendu. */
 
-/* Desktop (>= 922px) : on cache le header mobile et on montre le desktop */
-@media (min-width: 922px) {
-  body .ast-mobile-header-wrap,
-  body .ast-mobile-header-section,
-  body .ast-mobile-popup-drawer,
-  body #ast-mobile-header,
-  body .main-header-bar-wrap.ast-mobile-header-wrap {
-    display: none !important;
-  }
-
-  body .ast-desktop-header,
-  body .ast-desktop-header-content,
-  body #masthead .main-header-bar-wrap:not(.ast-mobile-header-wrap),
-  body .ast-primary-header-bar {
-    display: block;
-  }
+/* Desktop (>= 1025px) : afficher le header desktop, cacher le mobile */
+@media (min-width: 1025px) {
+  #ast-desktop-header { display: block !important; }
+  #ast-mobile-header  { display: none !important; }
 }
 
-/* Mobile (<= 921px) : on cache le header desktop et on montre le mobile */
-@media (max-width: 921px) {
-  body .ast-desktop-header,
-  body .ast-desktop-header-content,
-  body .main-header-bar-wrap:not(.ast-mobile-header-wrap):not(.ast-mobile-header-section) {
-    display: none !important;
-  }
-
-  body .ast-mobile-header-wrap,
-  body .ast-mobile-header-section {
-    display: block;
-  }
-}
-
-/* Le menu mobile (drawer/popup) doit etre cache par defaut a tous les
-   breakpoints, et n'apparait QUE quand .toggled / .ast-mobile-popup-drawer.active */
-body .ast-mobile-popup-drawer:not(.active),
-body #ast-mobile-header .main-header-menu:not(.toggle-on),
-body .ast-builder-menu-mobile .main-header-menu:not(.toggle-on) {
-  display: none !important;
+/* Tablette + Mobile (<= 1024px) : afficher le header mobile (avec burger) */
+@media (max-width: 1024px) {
+  #ast-desktop-header { display: none !important; }
+  #ast-mobile-header  { display: block !important; }
 }
 
 /* --- 2. Bouton "Devis gratuit !" double dans le header desktop ---
@@ -528,5 +500,174 @@ img:not(.elementor-icon img):not(.custom-logo):hover {
 
   h2.elementor-heading-title {
     font-size: 1.8rem !important;
+  }
+}
+
+/* ============================================================
+   8. HEADER RESPONSIF : Burger menu mobile
+   ============================================================ */
+
+/* Header transparent : overlay au-dessus du hero (comme /projets) */
+.ast-theme-transparent-header #masthead {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: transparent;
+}
+.ast-theme-transparent-header #masthead .ast-main-header-wrap {
+  background: transparent;
+}
+.ast-theme-transparent-header { position: relative; }
+
+/* Liens de la navbar transparente : blancs */
+.ast-theme-transparent-header #ast-desktop-header .menu-link,
+.ast-theme-transparent-header #ast-desktop-header .ast-custom-button {
+  color: #ffffff !important;
+}
+.ast-theme-transparent-header #ast-desktop-header .menu-link:hover,
+.ast-theme-transparent-header #ast-desktop-header .current-menu-item .menu-link {
+  color: #EA559D !important;
+}
+/* Bouton Devis gratuit ! encadre */
+.ast-theme-transparent-header #ast-desktop-header .ast-custom-button {
+  border: 2px solid rgba(255,255,255,0.85);
+  padding: 10px 22px;
+  border-radius: 6px;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.ast-theme-transparent-header #ast-desktop-header .ast-custom-button:hover {
+  background: #ffffff;
+  color: #EA559D !important;
+  border-color: #ffffff;
+}
+/* Cache le doublon de lien menu-link a cote du custom-button (clone WP) */
+.ast-builder-button-wrap .ast-custom-button-link + .menu-link { display: none; }
+
+/* Tablette + Mobile (<= 1024px) : styles du burger menu */
+@media (max-width: 1024px) {
+  /* Le header mobile s'affiche en flex pour aligner logo + burger */
+  #ast-mobile-header .ast-builder-grid-row {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+  }
+
+  /* Bouton burger : carre rose arrondi avec icone blanche */
+  body .menu-toggle.main-header-menu-toggle,
+  body .ast-mobile-menu-trigger-fill,
+  body .ast-mobile-menu-trigger-minimal,
+  body button.menu-toggle.main-header-menu-toggle.ast-mobile-menu-trigger-fill {
+    background: #EA559D !important;
+    background-color: #EA559D !important;
+    border: 0 !important;
+    border-radius: 12px !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+    color: #ffffff !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 52px !important;
+    height: 52px !important;
+    box-shadow: 0 6px 16px -4px rgba(234, 85, 157, 0.55) !important;
+    transition: background .2s ease, transform .2s ease, box-shadow .2s ease !important;
+  }
+  body .menu-toggle.main-header-menu-toggle:hover,
+  body .ast-mobile-menu-trigger-fill:hover {
+    background: #c93d83 !important;
+    background-color: #c93d83 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 22px -6px rgba(234, 85, 157, 0.7) !important;
+  }
+
+  /* L'icone reste blanche meme quand le header est transparent */
+  .ast-theme-transparent-header .menu-toggle.main-header-menu-toggle {
+    color: #ffffff !important;
+  }
+
+  .menu-toggle .ast-mobile-svg {
+    width: 26px; height: 26px;
+    fill: currentColor;
+  }
+
+  /* Icone X cachee par defaut, icone burger visible */
+  .menu-toggle .ast-close-svg { display: none; }
+  .menu-toggle .ast-menu-svg  { display: inline-block; }
+
+  /* Quand le menu est ouvert : on inverse */
+  .menu-toggle[aria-expanded="true"] .ast-menu-svg  { display: none; }
+  .menu-toggle[aria-expanded="true"] .ast-close-svg { display: inline-block; }
+
+  /* Panneau du menu mobile : slide-in depuis le haut */
+  .ast-mobile-header-content {
+    display: none;
+    background: #ffffff;
+    border-top: 1px solid #f1d6e4;
+    box-shadow: 0 12px 24px -8px rgba(0, 4, 34, 0.15);
+    padding: 16px 20px 24px;
+  }
+
+  /* Quand actif on affiche */
+  #ast-mobile-header.toggle-on .ast-mobile-header-content {
+    display: block;
+    animation: cct-slide-down .25s ease-out;
+  }
+
+  @keyframes cct-slide-down {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Liens du menu mobile */
+  .ast-mobile-header-content .main-header-menu {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+
+  .ast-mobile-header-content .menu-item {
+    border-bottom: 1px solid #f4e4ed;
+  }
+
+  .ast-mobile-header-content .menu-item:last-child {
+    border-bottom: 0;
+  }
+
+  .ast-mobile-header-content .menu-link {
+    display: block;
+    padding: 14px 8px;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #000422 !important;
+    text-decoration: none;
+    transition: color .2s ease, padding-left .2s ease;
+  }
+
+  .ast-mobile-header-content .menu-link:hover,
+  .ast-mobile-header-content .current-menu-item .menu-link {
+    color: #EA559D !important;
+    padding-left: 14px;
+  }
+
+  /* Cache le bouton "Devis gratuit !" duplique sur mobile dans la barre */
+  #ast-mobile-header .ast-header-button-1 { display: none; }
+
+  /* Logo mobile : un peu plus petit */
+  #ast-mobile-header .custom-logo {
+    max-width: 80px !important;
+    height: auto !important;
+  }
+
+  /* Header transparent : pas de bandeau de fond sur mobile, on laisse le logo
+     et le burger flotter directement sur l'image du hero */
+  .ast-theme-transparent-header #ast-mobile-header,
+  .ast-theme-transparent-header #ast-mobile-header .ast-main-header-wrap,
+  .ast-theme-transparent-header #ast-mobile-header .ast-primary-header-bar,
+  .ast-theme-transparent-header #ast-mobile-header .main-header-bar-wrap {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
   }
 }

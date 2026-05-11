@@ -265,4 +265,40 @@
     el.classList.add('counter-number');
     counterObserver.observe(el);
   });
+
+  // ============================================================
+  // BURGER MENU MOBILE (toggle ouverture/fermeture)
+  // ============================================================
+  const mobileHeader = document.getElementById('ast-mobile-header');
+  const burgerBtn = mobileHeader?.querySelector('.menu-toggle.main-header-menu-toggle');
+
+  if (burgerBtn && mobileHeader) {
+    burgerBtn.setAttribute('aria-expanded', 'false');
+
+    burgerBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isOpen = mobileHeader.classList.toggle('toggle-on');
+      burgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      document.body.classList.toggle('ast-mobile-menu-open', isOpen);
+    });
+
+    // Ferme le menu apres clic sur un lien
+    mobileHeader.querySelectorAll('.menu-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileHeader.classList.remove('toggle-on');
+        burgerBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('ast-mobile-menu-open');
+      });
+    });
+
+    // Ferme avec Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileHeader.classList.contains('toggle-on')) {
+        mobileHeader.classList.remove('toggle-on');
+        burgerBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('ast-mobile-menu-open');
+        burgerBtn.focus();
+      }
+    });
+  }
 </script>

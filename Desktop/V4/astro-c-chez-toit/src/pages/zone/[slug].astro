@@ -286,7 +286,6 @@ const services = [
     padding: 200px 0 100px;
     overflow: hidden;
     isolation: isolate;
-    margin-top: -120px; /* compense la navbar transparente fixe */
   }
   .cct-zp__hero-bg {
     position: absolute; inset: 0; z-index: -1;
@@ -513,4 +512,76 @@ const services = [
     line-height: 1.7; font-size: 15px;
   }
   .cct-faq__answer p { margin: 0; }
+
+  /* ===== RESPONSIVE MOBILE pour les pages zones ===== */
+  @media (max-width: 768px) {
+    .cct-zp__hero {
+      padding: 140px 0 60px;
+    }
+    .cct-zp__hero .cct-zp__title {
+      font-size: clamp(28px, 8vw, 40px);
+      max-width: 100%;
+    }
+    .cct-zp__hero .cct-zp__lead {
+      font-size: 16px;
+      padding: 0 8px;
+    }
+    .cct-zp__breadcrumb {
+      font-size: 12px;
+      margin-bottom: 24px;
+    }
+    .cct-zp__cta-row {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cct-btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .cct-zp__content,
+    .cct-zp__services,
+    .cct-zp__others,
+    .cct-zp__faq {
+      padding: 48px 0;
+    }
+    .cct-zp__sec-header h2 {
+      font-size: 26px;
+    }
+    .cct-zp__card {
+      padding: 24px 20px;
+      border-radius: 18px;
+    }
+    .cct-zp__card h3 {
+      font-size: 20px;
+    }
+    .cct-services-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .cct-svc-card {
+      padding: 22px 18px;
+    }
+    .cct-zp__others-list a {
+      font-size: 13px;
+      padding: 8px 14px;
+    }
+    .cct-faq summary {
+      padding: 16px 18px;
+      font-size: 15px;
+    }
+    .cct-faq__answer {
+      padding: 0 18px 18px;
+      font-size: 14px;
+    }
+    .cct-zp__container {
+      padding: 0 16px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .cct-zp__hero { padding: 160px 0 80px; }
+    .cct-services-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
 </style>
