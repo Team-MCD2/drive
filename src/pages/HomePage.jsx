@@ -39,7 +39,7 @@ export default function HomePage() {
 			<div data-elementor-type="wp-page" data-elementor-id="355" className="elementor elementor-355">
 				<div className="elementor-element elementor-element-4c62737 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="4c62737" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;video&quot;,&quot;background_video_link&quot;:&quot;https:\/\/drivepneu.microdidact.com\/wp-content\/uploads\/2025\/01\/banner-dreivepneu-toulouse.mov&quot;,&quot;background_play_on_mobile&quot;:&quot;yes&quot;}">
 		<div className="elementor-background-video-container" aria-hidden="true">
-							<video className="elementor-background-video-hosted" autoPlay muted playsInline loop src="https://drivepneu.microdidact.com/wp-content/uploads/2025/01/banner-dreivepneu-toulouse.mov" style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", top: 0, left: 0 }}></video>
+							<video className="elementor-background-video-hosted" autoPlay muted playsInline loop src="/video/banner-dreivepneu-toulouse.mov" style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", top: 0, left: 0 }}></video>
 					</div>
 					<div className="e-con-inner">
 					<div className="elementor-element elementor-element-d508afc e-con-full e-flex e-con e-child" data-id="d508afc" data-element_type="container">
@@ -74,7 +74,7 @@ export default function HomePage() {
 				</div>
 				<div className="elementor-element elementor-element-e3a87f9 elementor-widget elementor-widget-image" data-id="e3a87f9" data-element_type="widget" data-widget_type="image.default">
 				<div className="elementor-widget-container">
-															<img fetchPriority="high" decoding="async" width="355" height="260" src="https://drivepneu.fr/wp-content/uploads/2025/01/Pneu.png" className="attachment-full size-full wp-image-2330" alt="" srcset="https://drivepneu.fr/wp-content/uploads/2025/01/Pneu.png 355w, https://drivepneu.fr/wp-content/uploads/2025/01/Pneu-300x220.png 300w" sizes="(max-width: 355px) 100vw, 355px" />															</div>
+															<img fetchPriority="high" decoding="async" width="355" height="260" src="/images/Pneu.png" className="attachment-full size-full wp-image-2330" alt="" srcSet="/images/Pneu.png" sizes="(max-width: 355px) 100vw, 355px" />															</div>
 				</div>
 				</div>
 					</div>
@@ -107,7 +107,7 @@ export default function HomePage() {
 				<div className="elementor-element elementor-element-90e8f0a elementor-widget elementor-widget-button" data-id="90e8f0a" data-element_type="widget" data-widget_type="button.default">
 				<div className="elementor-widget-container">
 									<div className="elementor-button-wrapper">
-					<a className="elementor-button elementor-button-link elementor-size-sm" href="https://drivepneu.microdidact.com/contact/">
+					<a className="elementor-button elementor-button-link elementor-size-sm" href="/contact">
 						<span className="elementor-button-content-wrapper">
 						<span className="elementor-button-icon">
 				<svg aria-hidden="true" className="e-font-icon-svg e-far-calendar-check" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"></path></svg>			</span>
@@ -183,7 +183,7 @@ export default function HomePage() {
 				</div>
 				<div className="elementor-element elementor-element-17977ce elementor-widget elementor-widget-heading" data-id="17977ce" data-element_type="widget" data-widget_type="heading.default">
 				<div className="elementor-widget-container">
-					<p className="elementor-heading-title elementor-size-default"><a href="https://drivepneu.microdidact.com/">09 83 49 24 00</a></p>				</div>
+					<p className="elementor-heading-title elementor-size-default"><a href="/">09 83 49 24 00</a></p>				</div>
 				</div>
 				<div className="elementor-element elementor-element-20f3c89 elementor-widget elementor-widget-button" data-id="20f3c89" data-element_type="widget" data-widget_type="button.default">
 				<div className="elementor-widget-container">
@@ -227,7 +227,7 @@ export default function HomePage() {
 				<div className="elementor-element elementor-element-b737193 elementor-align-right elementor-mobile-align-left elementor-widget elementor-widget-button" data-id="b737193" data-element_type="widget" data-widget_type="button.default">
 				<div className="elementor-widget-container">
 									<div className="elementor-button-wrapper">
-					<a className="elementor-button elementor-button-link elementor-size-md" href="https://drivepneu.microdidact.com/services/">
+					<a className="elementor-button elementor-button-link elementor-size-md" href="/services">
 						<span className="elementor-button-content-wrapper">
 						<span className="elementor-button-icon">
 				<svg aria-hidden="true" className="e-font-icon-svg e-fas-caret-right" viewBox="0 0 192 512" xmlns="http://www.w3.org/2000/svg"><path d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"></path></svg>			</span>
@@ -617,52 +617,123 @@ export default function HomePage() {
 				</div>
 					</div>
 				</div>
-		<div className="elementor-element elementor-element-e6fca50 e-flex e-con-boxed e-con e-parent" data-id="e6fca50" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-					<div className="e-con-inner">
-		<div className="elementor-element elementor-element-249bc11 e-con-full e-flex e-con e-child" data-id="249bc11" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-				<div className="elementor-element elementor-element-cb96741 elementor-widget elementor-widget-heading" data-id="cb96741" data-element_type="widget" data-widget_type="heading.default">
-				<div className="elementor-widget-container">
-					<h6 className="elementor-heading-title elementor-size-default">CONTACTEZ-NOUS DÈS AUJOURD'HUI</h6>				</div>
-				</div>
-				<div className="elementor-element elementor-element-cf654c4 elementor-widget elementor-widget-heading" data-id="cf654c4" data-element_type="widget" data-widget_type="heading.default">
-				<div className="elementor-widget-container">
-					<h2 className="elementor-heading-title elementor-size-default"><a href="tel:+33983492400">09 83 49 24 00</a></h2>				</div>
-				</div>
-				<div className="elementor-element elementor-element-02182a0 elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="02182a0" data-element_type="widget" data-widget_type="divider.default">
-				<div className="elementor-widget-container">
-							<div className="elementor-divider">
-			<span className="elementor-divider-separator">
-						</span>
-		</div>
+		<div className="elementor-element elementor-element-e6fca50 e-flex e-con-boxed e-con e-parent" data-id="e6fca50" data-element_type="container" style={{
+			backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)), url("/images/car-repair-engine-tnfd.jpg")',
+			backgroundPosition: 'center center',
+			backgroundRepeat: 'no-repeat',
+			backgroundSize: 'cover',
+			backgroundAttachment: 'fixed',
+			padding: '100px 20px',
+			width: '100%'
+		}}>
+			<div className="e-con-inner" style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+				<div className="elementor-element elementor-element-249bc11 e-con-full e-flex e-con e-child" data-id="249bc11" data-element_type="container" style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+					
+					{/* Subtitle 1 */}
+					<h6 style={{
+						color: '#ffffff',
+						fontSize: '15px',
+						fontWeight: '700',
+						letterSpacing: '2px',
+						marginBottom: '15px',
+						textTransform: 'uppercase',
+						fontFamily: '"Outfit", sans-serif',
+						margin: '0 0 10px 0'
+					}}>
+						CONTACTEZ-NOUS DÈS AUJOURD'HUI
+					</h6>
+
+					{/* Main Title (Phone) */}
+					<h2 style={{
+						fontSize: 'clamp(32px, 5vw, 64px)',
+						fontWeight: '900',
+						margin: '0 0 25px 0',
+						fontFamily: '"Outfit", sans-serif',
+						lineHeight: '1.1'
+					}}>
+						<a href="tel:0983492400" style={{ color: '#ffffff', textDecoration: 'none' }}>
+							09 83 49 24 00
+						</a>
+					</h2>
+
+					{/* Divider */}
+					<div style={{
+						borderTop: '3px solid #dd183b',
+						width: '80px',
+						margin: '0 auto 30px auto'
+					}}></div>
+
+					{/* Subtitle 2 */}
+					<h6 style={{
+						color: '#ffffff',
+						fontSize: '16px',
+						fontWeight: '700',
+						letterSpacing: '2.5px',
+						textTransform: 'uppercase',
+						fontFamily: '"Outfit", sans-serif',
+						margin: '0 0 35px 0'
+					}}>
+						OÙ NOUS TROUVEZ ?
+					</h6>
+
+					{/* Google Map */}
+					<div className="elementor-element elementor-element-18ec0d3 elementor-widget elementor-widget-google_maps" data-id="18ec0d3" data-element_type="widget" data-widget_type="google_maps.default" style={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+						<div className="elementor-widget-container" style={{ width: '100%', maxWidth: '960px' }}>
+							<div className="elementor-custom-embed" style={{ borderRadius: '0px', overflow: 'hidden', boxShadow: '0 15px 35px rgba(0,0,0,0.3)' }}>
+								<iframe 
+									loading="lazy" 
+									src="https://maps.google.com/maps?q=GARAGE%20DRIVE%20PNEU%20-%20M%C3%A9canique%20G%C3%A9n%C3%A9rale%20%C3%A0%20Plaisance-du-Touch%2C%201%20Rue%20Gaspard-Gustave%20Coriolis%2C%2031830%20Plaisance-du-Touch&amp;t=m&amp;z=11&amp;output=embed&amp;iwloc=near" 
+									title="GARAGE DRIVE PNEU - Mécanique Générale à Plaisance-du-Touch, 1 Rue Gaspard-Gustave Coriolis, 31830 Plaisance-du-Touch" 
+									aria-label="GARAGE DRIVE PNEU - Mécanique Générale à Plaisance-du-Touch, 1 Rue Gaspard-Gustave Coriolis, 31830 Plaisance-du-Touch"
+									style={{ width: '100%', height: '420px', border: '0', display: 'block' }}
+								></iframe>
+							</div>
 						</div>
-				</div>
-				<div className="elementor-element elementor-element-05eea79 elementor-widget elementor-widget-heading" data-id="05eea79" data-element_type="widget" data-widget_type="heading.default">
-				<div className="elementor-widget-container">
-					<h6 className="elementor-heading-title elementor-size-default">OÙ NOUS TROUVEZ ?</h6>				</div>
-				</div>
-				<div className="elementor-element elementor-element-18ec0d3 elementor-widget elementor-widget-google_maps" data-id="18ec0d3" data-element_type="widget" data-widget_type="google_maps.default">
-				<div className="elementor-widget-container">
-							<div className="elementor-custom-embed">
-			<iframe data-placeholder-image="https://drivepneu.fr/wp-content/plugins/complianz-gdpr/assets/images/placeholders/google-maps-minimal-1280x920.jpg" data-category="marketing" data-service="google-maps" className="" data-cmplz-target="src" data-src-cmplz="https://maps.google.com/maps?q=GARAGE%20DRIVE%20PNEU%20-%20M%C3%A9canique%20et%20Pneus%20Plaisance-du-Touch&amp;t=m&amp;z=11&amp;output=embed&amp;iwloc=near" data-deferlazy="1" src="https://maps.google.com/maps?q=GARAGE%20DRIVE%20PNEU%20-%20M%C3%A9canique%20et%20Pneus%20Plaisance-du-Touch&amp;t=m&amp;z=11&amp;output=embed&amp;iwloc=near" title="GARAGE DRIVE PNEU - Mécanique et Pneus Plaisance-du-Touch" aria-label="GARAGE DRIVE PNEU - Mécanique et Pneus Plaisance-du-Touch" loading="lazy"></iframe>
-		</div>
-						</div>
-				</div>
-				<div className="elementor-element elementor-element-2f7f745 elementor-align-center elementor-mobile-align-center elementor-widget elementor-widget-button" data-id="2f7f745" data-element_type="widget" data-widget_type="button.default">
-				<div className="elementor-widget-container">
-									<div className="elementor-button-wrapper">
-					<a className="elementor-button elementor-button-link elementor-size-md" href="https://drivepneu.microdidact.com/contact/">
-						<span className="elementor-button-content-wrapper">
-						<span className="elementor-button-icon">
-				<svg aria-hidden="true" className="e-font-icon-svg e-far-file-alt" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M288 248v28c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-28c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm-12 72H108c-6.6 0-12 5.4-12 12v28c0 6.6 5.4 12 12 12h168c6.6 0 12-5.4 12-12v-28c0-6.6-5.4-12-12-12zm108-188.1V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V48C0 21.5 21.5 0 48 0h204.1C264.8 0 277 5.1 286 14.1L369.9 98c9 8.9 14.1 21.2 14.1 33.9zm-128-80V128h76.1L256 51.9zM336 464V176H232c-13.3 0-24-10.7-24-24V48H48v416h288z"></path></svg>			</span>
-									<span className="elementor-button-text">FAIRE UNE DEMANDE DE DEVIS</span>
-					</span>
-					</a>
-				</div>
-								</div>
-				</div>
-				</div>
 					</div>
+
+					{/* Button */}
+					<div className="elementor-element elementor-element-2f7f745 elementor-align-center elementor-widget elementor-widget-button" data-id="2f7f745" data-element_type="widget" data-widget_type="button.default" style={{ display: 'flex', justifyContent: 'center', marginTop: '15px' }}>
+						<div className="elementor-widget-container">
+							<div className="elementor-button-wrapper">
+								<a 
+									href="/contact" 
+									className="elementor-button elementor-button-link elementor-size-md"
+									style={{
+										display: 'inline-flex',
+										alignItems: 'center',
+										justifyContent: 'center',
+										backgroundColor: '#dd183b',
+										color: '#ffffff',
+										padding: '16px 36px',
+										fontSize: '15px',
+										fontWeight: '800',
+										letterSpacing: '1px',
+										textTransform: 'uppercase',
+										borderRadius: '0px',
+										textDecoration: 'none',
+										boxShadow: '6px 6px 0px #ffcc00',
+										transition: 'all 0.25s ease',
+										fontFamily: '"Outfit", sans-serif',
+										border: 'none',
+										cursor: 'pointer'
+									}}
+								>
+									<span className="elementor-button-content-wrapper">
+										<span className="elementor-button-icon" style={{ display: 'inline-flex', marginRight: '10px' }}>
+											<svg aria-hidden="true" className="e-font-icon-svg e-far-file-alt" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" style={{ width: '14px', height: '14px', fill: '#ffffff' }}>
+												<path d="M288 248v28c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-28c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm-12 72H108c-6.6 0-12 5.4-12 12v28c0 6.6 5.4 12 12 12h168c6.6 0 12-5.4 12-12v-28c0-6.6-5.4-12-12-12zm108-188.1V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V48C0 21.5 21.5 0 48 0h204.1C264.8 0 277 5.1 286 14.1L369.9 98c9 8.9 14.1 21.2 14.1 33.9zm-128-80V128h76.1L256 51.9zM336 464V176H232c-13.3 0-24-10.7-24-24V48H48v416h288z"></path>
+											</svg>
+										</span>
+										<span className="elementor-button-text">FAIRE UNE DEMANDE DE DEVIS</span>
+									</span>
+								</a>
+							</div>
+						</div>
+					</div>
+
 				</div>
+			</div>
+		</div>
 				</div>
 		
 	

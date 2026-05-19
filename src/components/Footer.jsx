@@ -9,7 +9,7 @@ export default function Footer() {
 					<div className="ast-builder-footer-grid-columns site-primary-footer-inner-wrap ast-builder-grid-row">
 											<div className="site-footer-primary-section-1 site-footer-section site-footer-section-1">
 							<aside className="footer-widget-area widget-area site-footer-focus-item footer-widget-area-inner" data-section="sidebar-widgets-footer-widget-1" aria-label="Footer Widget 1">
-			<section id="text-1" className="widget widget_text">			<div className="textwidget"><p><img decoding="async" className="alignnone size-medium wp-image-2466" src="https://drivepneu.microdidact.com/wp-content/uploads/2025/01/logo-drive-pneu-blanc-pneunoir-300x50.png" alt="" width="300" height="50" srcset="https://drivepneu.fr/wp-content/uploads/2025/01/logo-drive-pneu-blanc-pneunoir-300x50.png 300w, https://drivepneu.fr/wp-content/uploads/2025/01/logo-drive-pneu-blanc-pneunoir-1024x170.png 1024w, https://drivepneu.fr/wp-content/uploads/2025/01/logo-drive-pneu-blanc-pneunoir-768x127.png 768w, https://drivepneu.fr/wp-content/uploads/2025/01/logo-drive-pneu-blanc-pneunoir-1536x255.png 1536w, https://drivepneu.fr/wp-content/uploads/2025/01/logo-drive-pneu-blanc-pneunoir-2048x340.png 2048w" sizes="(max-width: 300px) 100vw, 300px" /></p>
+			<section id="text-1" className="widget widget_text">			<div className="textwidget"><p><img decoding="async" className="alignnone size-medium wp-image-2466" src="/images/logo-drive-pneu-blanc-pneunoir-300x50.png" alt="" width="300" height="50" srcSet="/images/logo-drive-pneu-blanc-pneunoir-300x50.png" sizes="(max-width: 300px) 100vw, 300px" /></p>
 <p>&nbsp;</p>
 </div>
 		</section>		</aside>
@@ -21,11 +21,11 @@ export default function Footer() {
 			<section id="nav_menu-1" className="widget widget_nav_menu"><h2 className="widget-title">Navigation</h2><nav className="menu-primary-container" aria-label="Navigation"><ul id="menu-primary" className="menu"><li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-355 current_page_item menu-item-22"><a href="/" aria-current="page" className="menu-link">Accueil</a></li>
 <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-220"><a aria-expanded="false" href="/services/" className="menu-link">Services<span role="application" className="dropdown-menu-toggle ast-header-navigation-arrow" tabIndex="0" aria-expanded="false" aria-label="Permutateur de Menu"></span></a>
 <ul className="sub-menu">
-	<li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2595"><a href="https://drivepneu.microdidact.com/services/#pneumatique" className="menu-link">Pneumatiques</a></li>
-	<li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2596"><a href="https://drivepneu.microdidact.com/services/#mecanique" className="menu-link">Mécanique et Révision</a></li>
-	<li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2597"><a href="https://drivepneu.microdidact.com/services/#geometrie" className="menu-link">Géométrie et Parallélisme</a></li>
-	<li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2598"><a href="https://drivepneu.microdidact.com/services/#ants" className="menu-link">Formalités Administratives – Carte Grise / ANTS</a></li>
-	<li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2599"><a href="https://drivepneu.microdidact.com/services/#main-doeuvre" className="menu-link">Tarifs Main-d’oeuvre</a></li>
+	<li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2595"><a href="/services#pneumatique" className="menu-link">Pneumatiques</a></li>
+	<li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2596"><a href="/services#mecanique" className="menu-link">Mécanique et Révision</a></li>
+	<li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2597"><a href="/services#geometrie" className="menu-link">Géométrie et Parallélisme</a></li>
+	<li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2598"><a href="/services#ants" className="menu-link">Formalités Administratives – Carte Grise / ANTS</a></li>
+	<li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2599"><a href="/services#main-doeuvre" className="menu-link">Tarifs Main-d’oeuvre</a></li>
 </ul>
 </li>
 <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2522"><a href="/mecanique-a-domicile/" className="menu-link">Mécanique à Domicile</a></li>

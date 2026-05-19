@@ -1,36 +1,265 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+
+const reviews = [
+  {
+    id: 1,
+    name: "Erwin Nasrii",
+    date: "2025-01-10",
+    text: "Toujours rien à redire , parallélisme nickel sur Mazda 3 mps alors qu’elle et vraiment très basse pour monter sur un pont . Et bien ici rien à dire professionnalisme et du très très bon travail comme toujours ! Vous pouvez y aller les yeux fermer !",
+    rating: 5,
+    avatar: "https://lh3.googleusercontent.com/a/ACg8ocKcAZoxZiN7R1syuTphvbHWSt2C8akM61IC5--0HckKQI0m8A=w80-h80-c-rp-mo-br100"
+  },
+  {
+    id: 2,
+    name: "Isa CLT",
+    date: "2025-01-08",
+    text: "Vraiment très contente de la prestation de Drive pneu. Je me suis présentée sans RDV pour une crevaison lente, j’ai été accueillie avec le sourire, ma voiture a été prise en charge immédiatement. Je suis repartie au bout de 20’, pneu réparé, avec un tarif plus que raisonnable. Je recommande sans réserve.",
+    rating: 5,
+    avatar: "https://lh3.googleusercontent.com/a/ACg8ocKaEYG2ZW_RvI-Xpo5ujUgYi8EwEnno_Lo30bJ8XB7AROJCYQ=w80-h80-c-rp-mo-br100"
+  },
+  {
+    id: 3,
+    name: "Jonathan Sebban",
+    date: "2025-01-04",
+    text: "Crevaison sur tesla model y ils m'ont mis une mèche le temps de payer j'étais déjà reparti rapide efficace je recommande merci à vous",
+    rating: 5,
+    avatar: "https://lh3.googleusercontent.com/a/ACg8ocKsx-EbdAwnVOee3hPb1FztCoqvKla_7KPbgR9wBQu7-HPSdQ=w80-h80-c-rp-mo-br100"
+  },
+  {
+    id: 4,
+    name: "Jamila Ancely",
+    date: "2024-12-20",
+    text: "Deux fois que je vais chez Drive Pneu et je ne peux que les recommander ! Travail rapide & soigné. D’ailleurs pour la première fois , j’étais partie chez un concurrent qui m’avait dit que ma roue n’était pas réparable & on m’a conseillé de venir chez Drive pneu . Et bizarrement avec eux , ils m’ont réparé la roue !!!! Merci encore pour votre professionnalisme !",
+    rating: 5,
+    avatar: "https://lh3.googleusercontent.com/a-/ALV-UjW6uIn35hts1M3K3Bj8QOQAGHcCczqtEW4-HzhlvVnc-9juLeCw=w80-h80-c-rp-mo-br100"
+  },
+  {
+    id: 5,
+    name: "Salma Benmansour",
+    date: "2024-12-07",
+    text: "J'avais besoin de remplacer une vanne EGR et un cardan, et ils ont réussi à tout faire en une seule journée, le tout à un tarif vraiment compétitif ! C’est le meilleur garage que j’aie fréquenté. Ma voiture était chez VL Automobile, à seulement 4 minutes de leur garage, et en un mois, ils n'ont pas pu établir de diagnostic, alors qu'ici, tout était réglé en une journée ! Un grand merci pour votre rapidité et votre accueil ! Je recommande vivement !",
+    rating: 5,
+    avatar: "https://lh3.googleusercontent.com/a-/ALV-UjXR0aVBUjR6xZVfUlTw-Ahocwqjlim6ZU84rfJ-mNb8Q6kC30UD=w80-h80-c-rp-mo-br100"
+  },
+  {
+    id: 6,
+    name: "franck maury",
+    date: "2024-11-22",
+    text: "Super agréable, J'avais une tige dans le pneu arrière de scenic , le soir, tard, ils ont pu me le faire, alors qu'il était fermé, mais encore là, à discuter avant le week-end. Ils m'ont réparé quand même le pneu malgré l'heure. Super rapide et efficace Merci",
+    rating: 5,
+    avatar: "https://lh3.googleusercontent.com/a/ACg8ocJ2AjfWe2AcdLVf4gHigqUJw2V6WR23SWsO_Wt69cIge9FAjw=w80-h80-c-rp-mo-br100"
+  },
+  {
+    id: 7,
+    name: "Rizou",
+    date: "2024-10-24",
+    text: "Ce garage nous a été recommandé et de notre côté, nous n’hésitons pas à suggérer à d’autres personnes d’y aller les yeux fermés.Equipe agréable, secrétaire efficace et d'un grand professionnalisme (connaissance du véhicule, démarche administrative) un grand merci",
+    rating: 5,
+    avatar: "https://lh3.googleusercontent.com/a/ACg8ocJI2KoezGj8ZzFxfmtTGT9liRLlzrkk9tmzsTMyMp63FHog_w=w80-h80-c-rp-mo-br100"
+  }
+];
 
 export default function TrustIndexWidget() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [cardsToShow, setCardsToShow] = useState(3);
+
+  // Handle responsive layout
   useEffect(() => {
-    const tiScriptId = 'trustindex-widget-wp-script';
-    let script = document.getElementById(tiScriptId);
-    if (script) {
-      script.remove();
-    }
-    script = document.createElement('script');
-    script.id = tiScriptId;
-    script.src = "https://cdn.trustindex.io/loader.js?wp-widget";
-    script.defer = true;
-    script.async = true;
-    document.body.appendChild(script);
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setCardsToShow(1);
+      } else if (window.innerWidth < 1024) {
+        setCardsToShow(2);
+      } else {
+        setCardsToShow(3);
+      }
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const totalGroups = Math.ceil(reviews.length / cardsToShow);
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev === 0 ? totalGroups - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev === totalGroups - 1 ? 0 : prev + 1));
+  };
+
+  // Auto-play slides every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [totalGroups]);
+
   return (
-    <div className="trustindex-widget-wrapper">
-      <pre className="ti-widget" style={{"display":"none"}}><template id="trustindex-google-widget-html"><div className=" ti-widget  ti-goog ti-disable-font ti-show-rating-text ti-review-text-mode-readmore ti-text-align-left" data-no-translation="true" data-layout-id="5" data-layout-category="slider" data-set-id="drop-shadow" data-pid="" data-language="fr" data-review-target-width="275" data-css-version="2" data-review-text-mode="readmore" data-reply-by-locale="Réponse du propriétaire" data-pager-autoplay-timeout="6" > <div className="ti-widget-container ti-col-4"> <div className="ti-footer ti-footer-grid source-Google"> <div className="ti-fade-container"> <div className="ti-rating-text"> <strong className="ti-rating ti-rating-large"> EXCELLENT </strong> </div> <span className="ti-stars star-lg"><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/h.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image></span> <div className="ti-rating-text"> <span className="nowrap">Basée sur <strong>265 avis</strong></span> </div> <div className="ti-large-logo"> <div className="ti-v-center"> <trustindex-image className="ti-logo-fb" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/logo.svg" width="150" height="25" loading="lazy" alt="Google" width="150" height="25" ></trustindex-image> </div> </div> </div> </div> <div className="ti-reviews-container"> <div className="ti-controls"> <div className="ti-next" aria-label="Avis suivante" role="button"></div> <div className="ti-prev" aria-label="Avis précédent" role="button"></div> </div> <div className="ti-reviews-container-wrapper">  <div data-empty="0" className="ti-review-item source-Google ti-image-layout-thumbnail" data-id="cfcd208495d565ef66e7dff9f98764da" > <div className="ti-inner"> <div className="ti-review-header"> <trustindex-image className="ti-platform-icon" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/icon.svg" alt="Google" width="20" height="20" loading="lazy" ></trustindex-image> <div className="ti-profile-img"> <trustindex-image data-imgurl="https://lh3.googleusercontent.com/a/ACg8ocKcAZoxZiN7R1syuTphvbHWSt2C8akM61IC5--0HckKQI0m8A=w40-h40-c-rp-mo-br100" data-imgurlset="https://lh3.googleusercontent.com/a/ACg8ocKcAZoxZiN7R1syuTphvbHWSt2C8akM61IC5--0HckKQI0m8A=w80-h80-c-rp-mo-br100 2x" alt="Erwin Nasrii profile picture" loading="lazy" ></trustindex-image> </div> <div className="ti-profile-details"> <div className="ti-name"> Erwin Nasrii </div> <div className="ti-date">2025-01-10</div> </div> </div> <span className="ti-stars"><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><span className="ti-verified-review ti-verified-platform"><span className="ti-verified-tooltip">Trustindex vérifie que la source originale de l'avis est Google.</span></span></span> <div className="ti-review-text-container ti-review-content">Toujours rien à redire , parallélisme nickel sur Mazda 3 mps alors qu’elle et vraiment très basse pour monter sur un pont . Et bien ici rien à dire professionnalisme et du très très bon travail comme toujours ! Vous pouvez y aller les yeux fermer !</div> <span className="ti-read-more" data-container=".ti-review-content" data-collapse-text="Cacher" data-open-text="Lire la suite" ></span> </div> </div>  <div data-empty="0" className="ti-review-item source-Google ti-image-layout-thumbnail" data-id="cfcd208495d565ef66e7dff9f98764da" > <div className="ti-inner"> <div className="ti-review-header"> <trustindex-image className="ti-platform-icon" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/icon.svg" alt="Google" width="20" height="20" loading="lazy" ></trustindex-image> <div className="ti-profile-img"> <trustindex-image data-imgurl="https://lh3.googleusercontent.com/a/ACg8ocKaEYG2ZW_RvI-Xpo5ujUgYi8EwEnno_Lo30bJ8XB7AROJCYQ=w40-h40-c-rp-mo-br100" data-imgurlset="https://lh3.googleusercontent.com/a/ACg8ocKaEYG2ZW_RvI-Xpo5ujUgYi8EwEnno_Lo30bJ8XB7AROJCYQ=w80-h80-c-rp-mo-br100 2x" alt="Isa CLT profile picture" loading="lazy" ></trustindex-image> </div> <div className="ti-profile-details"> <div className="ti-name"> Isa CLT </div> <div className="ti-date">2025-01-08</div> </div> </div> <span className="ti-stars"><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><span className="ti-verified-review ti-verified-platform"><span className="ti-verified-tooltip">Trustindex vérifie que la source originale de l'avis est Google.</span></span></span> <div className="ti-review-text-container ti-review-content">Vraiment très contente de la prestation de Drive pneu. Je me suis présentée sans RDV pour une crevaison lente, j’ai été accueillie avec le sourire, ma voiture a été prise en charge immédiatement.
-Je suis repartie au bout de 20’, pneu réparé, avec un tarif plus que raisonnable.
-Je recommande sans réserve.</div> <span className="ti-read-more" data-container=".ti-review-content" data-collapse-text="Cacher" data-open-text="Lire la suite" ></span> </div> </div>  <div data-empty="0" className="ti-review-item source-Google ti-image-layout-thumbnail" data-id="cfcd208495d565ef66e7dff9f98764da" > <div className="ti-inner"> <div className="ti-review-header"> <trustindex-image className="ti-platform-icon" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/icon.svg" alt="Google" width="20" height="20" loading="lazy" ></trustindex-image> <div className="ti-profile-img"> <trustindex-image data-imgurl="https://lh3.googleusercontent.com/a/ACg8ocKsx-EbdAwnVOee3hPb1FztCoqvKla_7KPbgR9wBQu7-HPSdQ=w40-h40-c-rp-mo-br100" data-imgurlset="https://lh3.googleusercontent.com/a/ACg8ocKsx-EbdAwnVOee3hPb1FztCoqvKla_7KPbgR9wBQu7-HPSdQ=w80-h80-c-rp-mo-br100 2x" alt="Jonathan Sebban profile picture" loading="lazy" ></trustindex-image> </div> <div className="ti-profile-details"> <div className="ti-name"> Jonathan Sebban </div> <div className="ti-date">2025-01-04</div> </div> </div> <span className="ti-stars"><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><span className="ti-verified-review ti-verified-platform"><span className="ti-verified-tooltip">Trustindex vérifie que la source originale de l'avis est Google.</span></span></span> <div className="ti-review-text-container ti-review-content">Crevaison sur tesla model y ils m'ont mis une mèche le temps de payer j'étais déjà reparti rapide efficace je recommande merci à vous</div> <span className="ti-read-more" data-container=".ti-review-content" data-collapse-text="Cacher" data-open-text="Lire la suite" ></span> </div> </div>  <div data-empty="0" className="ti-review-item source-Google ti-image-layout-thumbnail" data-id="cfcd208495d565ef66e7dff9f98764da" > <div className="ti-inner"> <div className="ti-review-header"> <trustindex-image className="ti-platform-icon" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/icon.svg" alt="Google" width="20" height="20" loading="lazy" ></trustindex-image> <div className="ti-profile-img"> <trustindex-image data-imgurl="https://lh3.googleusercontent.com/a-/ALV-UjW6uIn35hts1M3K3Bj8QOQAGHcCczqtEW4-HzhlvVnc-9juLeCw=w40-h40-c-rp-mo-br100" data-imgurlset="https://lh3.googleusercontent.com/a-/ALV-UjW6uIn35hts1M3K3Bj8QOQAGHcCczqtEW4-HzhlvVnc-9juLeCw=w80-h80-c-rp-mo-br100 2x" alt="Jamila Ancely (jamy_douce_heure) profile picture" loading="lazy" ></trustindex-image> </div> <div className="ti-profile-details"> <div className="ti-name"> Jamila Ancely (jamy_douce_heure) </div> <div className="ti-date">2024-12-20</div> </div> </div> <span className="ti-stars"><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><span className="ti-verified-review ti-verified-platform"><span className="ti-verified-tooltip">Trustindex vérifie que la source originale de l'avis est Google.</span></span></span> <div className="ti-review-text-container ti-review-content">Deux fois que je vais chez Drive Pneu et je ne peux que les recommander !
-Travail rapide & soigné.
-D’ailleurs pour la première fois , j’étais partie chez un concurrent qui m’avait dit que ma roue n’était pas réparable & on m’a conseillé de venir chez Drive pneu . Et bizarrement avec eux , ils m’ont réparé la roue !!!!
-Merci encore pour votre professionnalisme !</div> <span className="ti-read-more" data-container=".ti-review-content" data-collapse-text="Cacher" data-open-text="Lire la suite" ></span> </div> </div>  <div data-empty="0" className="ti-review-item source-Google ti-image-layout-thumbnail" data-id="cfcd208495d565ef66e7dff9f98764da" > <div className="ti-inner"> <div className="ti-review-header"> <trustindex-image className="ti-platform-icon" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/icon.svg" alt="Google" width="20" height="20" loading="lazy" ></trustindex-image> <div className="ti-profile-img"> <trustindex-image data-imgurl="https://lh3.googleusercontent.com/a-/ALV-UjXR0aVBUjR6xZVfUlTw-Ahocwqjlim6ZU84rfJ-mNb8Q6kC30UD=w40-h40-c-rp-mo-br100" data-imgurlset="https://lh3.googleusercontent.com/a-/ALV-UjXR0aVBUjR6xZVfUlTw-Ahocwqjlim6ZU84rfJ-mNb8Q6kC30UD=w80-h80-c-rp-mo-br100 2x" alt="Salma Benmansour profile picture" loading="lazy" ></trustindex-image> </div> <div className="ti-profile-details"> <div className="ti-name"> Salma Benmansour </div> <div className="ti-date">2024-12-07</div> </div> </div> <span className="ti-stars"><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><span className="ti-verified-review ti-verified-platform"><span className="ti-verified-tooltip">Trustindex vérifie que la source originale de l'avis est Google.</span></span></span> <div className="ti-review-text-container ti-review-content">J'avais besoin de remplacer une vanne EGR et un cardan, et ils ont réussi à tout faire en une seule journée, le tout à un tarif vraiment compétitif ! C’est le meilleur garage que j’aie fréquenté. Ma voiture était chez VL Automobile, à seulement 4 minutes de leur garage, et en un mois, ils n'ont pas pu établir de diagnostic, alors qu'ici, tout était réglé en une journée ! Un grand merci pour votre rapidité et votre accueil ! Je recommande vivement !</div> <span className="ti-read-more" data-container=".ti-review-content" data-collapse-text="Cacher" data-open-text="Lire la suite" ></span> </div> </div>  <div data-empty="0" className="ti-review-item source-Google ti-image-layout-thumbnail" data-id="cfcd208495d565ef66e7dff9f98764da" > <div className="ti-inner"> <div className="ti-review-header"> <trustindex-image className="ti-platform-icon" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/icon.svg" alt="Google" width="20" height="20" loading="lazy" ></trustindex-image> <div className="ti-profile-img"> <trustindex-image data-imgurl="https://lh3.googleusercontent.com/a/ACg8ocJ2AjfWe2AcdLVf4gHigqUJw2V6WR23SWsO_Wt69cIge9FAjw=w40-h40-c-rp-mo-br100" data-imgurlset="https://lh3.googleusercontent.com/a/ACg8ocJ2AjfWe2AcdLVf4gHigqUJw2V6WR23SWsO_Wt69cIge9FAjw=w80-h80-c-rp-mo-br100 2x" alt="franck maury profile picture" loading="lazy" ></trustindex-image> </div> <div className="ti-profile-details"> <div className="ti-name"> franck maury </div> <div className="ti-date">2024-11-22</div> </div> </div> <span className="ti-stars"><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><span className="ti-verified-review ti-verified-platform"><span className="ti-verified-tooltip">Trustindex vérifie que la source originale de l'avis est Google.</span></span></span> <div className="ti-review-text-container ti-review-content">Super agréable, J'avais une tige dans le pneu arrière de scenic , le soir, tard, ils ont pu me le faire, alors qu'il était fermé, mais encore là, à discuter avant le week-end. Ils m'ont réparé quand même le pneu malgré l'heure.
-Super rapide et efficace
-Merci</div> <span className="ti-read-more" data-container=".ti-review-content" data-collapse-text="Cacher" data-open-text="Lire la suite" ></span> </div> </div>  <div data-empty="0" className="ti-review-item source-Google ti-image-layout-thumbnail" data-id="cfcd208495d565ef66e7dff9f98764da" > <div className="ti-inner"> <div className="ti-review-header"> <trustindex-image className="ti-platform-icon" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/icon.svg" alt="Google" width="20" height="20" loading="lazy" ></trustindex-image> <div className="ti-profile-img"> <trustindex-image data-imgurl="https://lh3.googleusercontent.com/a-/ALV-UjX9ZEmq3ClveLT9P-3CZNaeDWAJ9MEWsQ33MuLxtlHA6qmB2LcM=w40-h40-c-rp-mo-ba5-br100" data-imgurlset="https://lh3.googleusercontent.com/a-/ALV-UjX9ZEmq3ClveLT9P-3CZNaeDWAJ9MEWsQ33MuLxtlHA6qmB2LcM=w80-h80-c-rp-mo-ba5-br100 2x" alt="CAROLINE DAROLLES profile picture" loading="lazy" ></trustindex-image> </div> <div className="ti-profile-details"> <div className="ti-name"> CAROLINE DAROLLES </div> <div className="ti-date">2024-11-19</div> </div> </div> <span className="ti-stars"><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><span className="ti-verified-review ti-verified-platform"><span className="ti-verified-tooltip">Trustindex vérifie que la source originale de l'avis est Google.</span></span></span> <div className="ti-review-text-container ti-review-content">Toujours de bon conseils et très accueillant et chaleureux i</div> <span className="ti-read-more" data-container=".ti-review-content" data-collapse-text="Cacher" data-open-text="Lire la suite" ></span> </div> </div>  <div data-empty="0" className="ti-review-item source-Google ti-image-layout-thumbnail" data-id="cfcd208495d565ef66e7dff9f98764da" > <div className="ti-inner"> <div className="ti-review-header"> <trustindex-image className="ti-platform-icon" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/icon.svg" alt="Google" width="20" height="20" loading="lazy" ></trustindex-image> <div className="ti-profile-img"> <trustindex-image data-imgurl="https://lh3.googleusercontent.com/a-/ALV-UjWYdMuSxu86iYo8ksoUvp9IpWEjulch8j6_0pghV8mnDNfaog=w40-h40-c-rp-mo-ba2-br100" data-imgurlset="https://lh3.googleusercontent.com/a-/ALV-UjWYdMuSxu86iYo8ksoUvp9IpWEjulch8j6_0pghV8mnDNfaog=w80-h80-c-rp-mo-ba2-br100 2x" alt="Abdelmajid Drj profile picture" loading="lazy" ></trustindex-image> </div> <div className="ti-profile-details"> <div className="ti-name"> Abdelmajid Drj </div> <div className="ti-date">2024-11-19</div> </div> </div> <span className="ti-stars"><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><span className="ti-verified-review ti-verified-platform"><span className="ti-verified-tooltip">Trustindex vérifie que la source originale de l'avis est Google.</span></span></span> <div className="ti-review-text-container ti-review-content">Je conseille fortement
-Car c'est une bonne équipe et sont super gentils
-J'ai fait de parallélisme et je suis satisfait
-Merci</div> <span className="ti-read-more" data-container=".ti-review-content" data-collapse-text="Cacher" data-open-text="Lire la suite" ></span> </div> </div>  <div data-empty="0" className="ti-review-item source-Google ti-image-layout-thumbnail" data-id="cfcd208495d565ef66e7dff9f98764da" > <div className="ti-inner"> <div className="ti-review-header"> <trustindex-image className="ti-platform-icon" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/icon.svg" alt="Google" width="20" height="20" loading="lazy" ></trustindex-image> <div className="ti-profile-img"> <trustindex-image data-imgurl="https://lh3.googleusercontent.com/a/ACg8ocJI2KoezGj8ZzFxfmtTGT9liRLlzrkk9tmzsTMyMp63FHog_w=w40-h40-c-rp-mo-br100" data-imgurlset="https://lh3.googleusercontent.com/a/ACg8ocJI2KoezGj8ZzFxfmtTGT9liRLlzrkk9tmzsTMyMp63FHog_w=w80-h80-c-rp-mo-br100 2x" alt="Rizou profile picture" loading="lazy" ></trustindex-image> </div> <div className="ti-profile-details"> <div className="ti-name"> Rizou </div> <div className="ti-date">2024-10-24</div> </div> </div> <span className="ti-stars"><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><span className="ti-verified-review ti-verified-platform"><span className="ti-verified-tooltip">Trustindex vérifie que la source originale de l'avis est Google.</span></span></span> <div className="ti-review-text-container ti-review-content">Ce garage nous a été recommandé et de notre côté, nous n’hésitons pas à suggérer à d’autres personnes d’y aller les yeux fermés.Equipe agréable, secrétaire efficace et d'un grand professionnalisme (connaissance du véhicule, démarche administrative) un grand merci</div> <span className="ti-read-more" data-container=".ti-review-content" data-collapse-text="Cacher" data-open-text="Lire la suite" ></span> </div> </div>  <div data-empty="0" className="ti-review-item source-Google ti-image-layout-thumbnail" data-id="cfcd208495d565ef66e7dff9f98764da" > <div className="ti-inner"> <div className="ti-review-header"> <trustindex-image className="ti-platform-icon" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/icon.svg" alt="Google" width="20" height="20" loading="lazy" ></trustindex-image> <div className="ti-profile-img"> <trustindex-image data-imgurl="https://lh3.googleusercontent.com/a-/ALV-UjWSQTnCL-5EBYmOsnYH4tY1x6kWRYuQJBew1HqTCqGks5o_qN8=w40-h40-c-rp-mo-br100" data-imgurlset="https://lh3.googleusercontent.com/a-/ALV-UjWSQTnCL-5EBYmOsnYH4tY1x6kWRYuQJBew1HqTCqGks5o_qN8=w80-h80-c-rp-mo-br100 2x" alt="William Bassonville profile picture" loading="lazy" ></trustindex-image> </div> <div className="ti-profile-details"> <div className="ti-name"> William Bassonville </div> <div className="ti-date">2024-10-02</div> </div> </div> <span className="ti-stars"><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/f.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><trustindex-image className="ti-star" data-imgurl="https://cdn.trustindex.io/assets/platform/Google/star/e.svg" alt="Google" width="17" height="17" loading="lazy" ></trustindex-image><span className="ti-verified-review ti-verified-platform"><span className="ti-verified-tooltip">Trustindex vérifie que la source originale de l'avis est Google.</span></span></span> <div className="ti-review-text-container ti-review-content">Une prestation de géométrie à un prix imbattable.
-Une étoile en moins malgré tout...
-J'ai du déserrer moi-même la vis de mon bras de carrossage, revenir et payer une nouvelle géométrie complète avec une (petite) remise car le technicien n'a pas réussi à débloquer la vis lors du premier passage.
-Deux géométries qui restent tout de même à un prix qui avoisinerait le prix d'une ailleurs, je reste donc tolérant et recommande ce lieu chaleureux.</div> <span className="ti-read-more" data-container=".ti-review-content" data-collapse-text="Cacher" data-open-text="Lire la suite" ></span> </div> </div>  </div> <div className="ti-controls-line"> <div className="dot"></div> </div>   </div> </div> </div> </template></pre><div data-src="https://cdn.trustindex.io/loader.js?wp-widget" data-template-id="trustindex-google-widget-html" data-css-url="https://drivepneu.fr/wp-content/uploads/trustindex-google-widget.css?1757336480"></div>
+    <div className="review-carousel-container" style={{
+      position: 'relative',
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: '20px 40px',
+      overflow: 'hidden'
+    }}>
+      <style>{`
+        .review-card {
+          background: #fff;
+          border-radius: 12px;
+          padding: 24px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          border: 1px solid #f0f0f0;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .review-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+        .review-header {
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
+        }
+        .review-avatar {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-right: 15px;
+        }
+        .review-author {
+          display: flex;
+          flex-direction: column;
+        }
+        .review-name {
+          font-weight: 700;
+          color: #333;
+          font-size: 16px;
+        }
+        .review-date {
+          font-size: 13px;
+          color: #888;
+          margin-top: 2px;
+        }
+        .review-stars {
+          display: flex;
+          gap: 2px;
+          margin-bottom: 15px;
+          color: #FFB800;
+        }
+        .review-text {
+          color: #555;
+          line-height: 1.6;
+          font-size: 15px;
+          flex-grow: 1;
+        }
+        .google-icon {
+          width: 20px;
+          height: 20px;
+          margin-left: auto;
+        }
+        .carousel-btn {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: #fff;
+          border: 1px solid #eaeaea;
+          border-radius: 50%;
+          width: 44px;
+          height: 44px;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+          z-index: 10;
+          transition: all 0.3s ease;
+          color: #333;
+          font-size: 18px;
+        }
+        .carousel-btn:hover {
+          background: #dd183b;
+          color: white;
+          border-color: #dd183b;
+        }
+        .carousel-btn.prev { left: 0; }
+        .carousel-btn.next { right: 0; }
+        
+        .carousel-dots {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          margin-top: 25px;
+        }
+        .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: #ccc;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .dot.active {
+          background: #dd183b;
+          transform: scale(1.2);
+        }
+      `}</style>
+
+      <div className="carousel-track-wrapper" style={{ overflow: 'hidden' }}>
+        <div className="carousel-track" style={{
+          display: 'flex',
+          transform: `translateX(-${currentIndex * 100}%)`,
+          transition: 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)',
+        }}>
+          {Array.from({ length: totalGroups }).map((_, groupIndex) => (
+            <div key={groupIndex} className="carousel-group" style={{
+              display: 'flex',
+              minWidth: '100%',
+              gap: '20px',
+              padding: '10px'
+            }}>
+              {reviews.slice(groupIndex * cardsToShow, (groupIndex + 1) * cardsToShow).map((review) => (
+                <div key={review.id} style={{ flex: `0 0 calc((100% - ${(cardsToShow - 1) * 20}px) / ${cardsToShow})` }}>
+                  <div className="review-card">
+                    <div className="review-header">
+                      <img src={review.avatar} alt={review.name} className="review-avatar" />
+                      <div className="review-author">
+                        <span className="review-name">{review.name}</span>
+                        <span className="review-date">{review.date}</span>
+                      </div>
+                      <img 
+                        src="https://cdn.trustindex.io/assets/platform/Google/icon.svg" 
+                        alt="Google" 
+                        className="google-icon" 
+                      />
+                    </div>
+                    <div className="review-stars">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                        </svg>
+                      ))}
+                    </div>
+                    <div className="review-text">
+                      "{review.text}"
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+
     </div>
   );
 }

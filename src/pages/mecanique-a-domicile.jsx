@@ -361,7 +361,7 @@ export default function Mecaniqueadomicile() {
 		<div className="elementor-element elementor-element-d53d726 e-con-full e-flex e-con e-child" data-id="d53d726" data-element_type="container">
 				<div className="elementor-element elementor-element-971e31a elementor-widget elementor-widget-image" data-id="971e31a" data-element_type="widget" data-widget_type="image.default">
 				<div className="elementor-widget-container">
-															<img fetchPriority="high" decoding="async" width="1024" height="859" src="https://drivepneu.fr/wp-content/uploads/2025/01/ZONE-INTERVENTION-1024x859.png" className="attachment-large size-large wp-image-2511" alt="" srcset="https://drivepneu.fr/wp-content/uploads/2025/01/ZONE-INTERVENTION-1024x859.png 1024w, https://drivepneu.fr/wp-content/uploads/2025/01/ZONE-INTERVENTION-300x252.png 300w, https://drivepneu.fr/wp-content/uploads/2025/01/ZONE-INTERVENTION-768x645.png 768w, https://drivepneu.fr/wp-content/uploads/2025/01/ZONE-INTERVENTION-1536x1289.png 1536w, https://drivepneu.fr/wp-content/uploads/2025/01/ZONE-INTERVENTION.png 1606w" sizes="(max-width: 1024px) 100vw, 1024px" />															</div>
+															<img fetchPriority="high" decoding="async" width="1024" height="859" src="/images/ZONE-INTERVENTION-1024x859.png" className="attachment-large size-large wp-image-2511" alt="" srcSet="/images/ZONE-INTERVENTION-1024x859.png" sizes="(max-width: 1024px) 100vw, 1024px" />															</div>
 				</div>
 				</div>
 		<div className="elementor-element elementor-element-8d5fcd9 e-con-full e-flex e-con e-child" data-id="8d5fcd9" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -401,14 +401,14 @@ export default function Mecaniqueadomicile() {
 				<div className="elementor-element elementor-element-dfa1831 elementor-widget elementor-widget-google_maps" data-id="dfa1831" data-element_type="widget" data-widget_type="google_maps.default">
 				<div className="elementor-widget-container">
 							<div className="elementor-custom-embed">
-			<iframe data-placeholder-image="https://drivepneu.fr/wp-content/plugins/complianz-gdpr/assets/images/placeholders/google-maps-minimal-1280x920.jpg" data-category="marketing" data-service="google-maps" className="" data-cmplz-target="src" data-src-cmplz="https://maps.google.com/maps?q=DRIVE%20PNEU&amp;t=m&amp;z=10&amp;output=embed&amp;iwloc=near" data-deferlazy="1" src="https://maps.google.com/maps?q=DRIVE%20PNEU&amp;t=m&amp;z=10&amp;output=embed&amp;iwloc=near" title="DRIVE PNEU" aria-label="DRIVE PNEU" loading="lazy"></iframe>
+			<iframe data-placeholder-image="/images/google-maps-minimal-1280x920.jpg" data-category="marketing" data-service="google-maps" className="" data-cmplz-target="src" data-src-cmplz="https://maps.google.com/maps?q=DRIVE%20PNEU&amp;t=m&amp;z=10&amp;output=embed&amp;iwloc=near" data-deferlazy="1" src="https://maps.google.com/maps?q=DRIVE%20PNEU&amp;t=m&amp;z=10&amp;output=embed&amp;iwloc=near" title="DRIVE PNEU" aria-label="DRIVE PNEU" loading="lazy"></iframe>
 		</div>
 						</div>
 				</div>
 				<div className="elementor-element elementor-element-bd6e02c elementor-align-center elementor-mobile-align-center elementor-widget elementor-widget-button" data-id="bd6e02c" data-element_type="widget" data-widget_type="button.default">
 				<div className="elementor-widget-container">
 									<div className="elementor-button-wrapper">
-					<a className="elementor-button elementor-button-link elementor-size-md" href="https://drivepneu.microdidact.com/contact/">
+					<a className="elementor-button elementor-button-link elementor-size-md" href="/contact">
 						<span className="elementor-button-content-wrapper">
 						<span className="elementor-button-icon">
 				<svg aria-hidden="true" className="e-font-icon-svg e-far-file-alt" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M288 248v28c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-28c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm-12 72H108c-6.6 0-12 5.4-12 12v28c0 6.6 5.4 12 12 12h168c6.6 0 12-5.4 12-12v-28c0-6.6-5.4-12-12-12zm108-188.1V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V48C0 21.5 21.5 0 48 0h204.1C264.8 0 277 5.1 286 14.1L369.9 98c9 8.9 14.1 21.2 14.1 33.9zm-128-80V128h76.1L256 51.9zM336 464V176H232c-13.3 0-24-10.7-24-24V48H48v416h288z"></path></svg>			</span>

@@ -61,7 +61,7 @@ export default function Services() {
 				<div className="elementor-element elementor-element-d4ae6ea elementor-mobile-align-left elementor-widget elementor-widget-button" data-id="d4ae6ea" data-element_type="widget" data-widget_type="button.default">
 				<div className="elementor-widget-container">
 									<div className="elementor-button-wrapper">
-					<a className="elementor-button elementor-button-link elementor-size-md" href="https://drivepneu.microdidact.com/contact/">
+					<a className="elementor-button elementor-button-link elementor-size-md" href="/contact">
 						<span className="elementor-button-content-wrapper">
 						<span className="elementor-button-icon">
 				<svg aria-hidden="true" className="e-font-icon-svg e-far-calendar-check" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"></path></svg>			</span>
@@ -1031,14 +1031,14 @@ Les tarifs affichés sont par paire.					</p>
 				<div className="elementor-element elementor-element-4ff955dc elementor-widget elementor-widget-google_maps" data-id="4ff955dc" data-element_type="widget" data-widget_type="google_maps.default">
 				<div className="elementor-widget-container">
 							<div className="elementor-custom-embed">
-			<iframe data-placeholder-image="https://drivepneu.fr/wp-content/plugins/complianz-gdpr/assets/images/placeholders/google-maps-minimal-1280x920.jpg" data-category="marketing" data-service="google-maps" className="" data-cmplz-target="src" data-src-cmplz="https://maps.google.com/maps?q=DRIVE%20PNEU&amp;t=m&amp;z=10&amp;output=embed&amp;iwloc=near" data-deferlazy="1" src="https://maps.google.com/maps?q=DRIVE%20PNEU&amp;t=m&amp;z=10&amp;output=embed&amp;iwloc=near" title="DRIVE PNEU" aria-label="DRIVE PNEU" loading="lazy"></iframe>
+			<iframe data-placeholder-image="/images/google-maps-minimal-1280x920.jpg" data-category="marketing" data-service="google-maps" className="" data-cmplz-target="src" data-src-cmplz="https://maps.google.com/maps?q=DRIVE%20PNEU&amp;t=m&amp;z=10&amp;output=embed&amp;iwloc=near" data-deferlazy="1" src="https://maps.google.com/maps?q=DRIVE%20PNEU&amp;t=m&amp;z=10&amp;output=embed&amp;iwloc=near" title="DRIVE PNEU" aria-label="DRIVE PNEU" loading="lazy"></iframe>
 		</div>
 						</div>
 				</div>
 				<div className="elementor-element elementor-element-186858c6 elementor-align-center elementor-mobile-align-center elementor-widget elementor-widget-button" data-id="186858c6" data-element_type="widget" data-widget_type="button.default">
 				<div className="elementor-widget-container">
 									<div className="elementor-button-wrapper">
-					<a className="elementor-button elementor-button-link elementor-size-md" href="https://drivepneu.microdidact.com/contact/">
+					<a className="elementor-button elementor-button-link elementor-size-md" href="/contact">
 						<span className="elementor-button-content-wrapper">
 						<span className="elementor-button-icon">
 				<svg aria-hidden="true" className="e-font-icon-svg e-far-file-alt" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M288 248v28c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-28c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm-12 72H108c-6.6 0-12 5.4-12 12v28c0 6.6 5.4 12 12 12h168c6.6 0 12-5.4 12-12v-28c0-6.6-5.4-12-12-12zm108-188.1V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V48C0 21.5 21.5 0 48 0h204.1C264.8 0 277 5.1 286 14.1L369.9 98c9 8.9 14.1 21.2 14.1 33.9zm-128-80V128h76.1L256 51.9zM336 464V176H232c-13.3 0-24-10.7-24-24V48H48v416h288z"></path></svg>			</span>
