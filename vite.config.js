@@ -15,5 +15,16 @@ export default defineConfig({
         }
       }
     }
+  },
+  build: {
+    cssMinify: true,
+    assetsInlineLimit: 4096,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+        }
+      }
+    }
   }
 })

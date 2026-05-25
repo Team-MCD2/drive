@@ -39,7 +39,7 @@ export default function HomePage() {
 			<div data-elementor-type="wp-page" data-elementor-id="355" className="elementor elementor-355">
 				<div className="elementor-element elementor-element-4c62737 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="4c62737" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;video&quot;,&quot;background_video_link&quot;:&quot;https:\/\/drivepneu.microdidact.com\/wp-content\/uploads\/2025\/01\/banner-dreivepneu-toulouse.mov&quot;,&quot;background_play_on_mobile&quot;:&quot;yes&quot;}">
 		<div className="elementor-background-video-container" aria-hidden="true">
-							<video className="elementor-background-video-hosted" autoPlay muted playsInline loop src="/video/banner-dreivepneu-toulouse.mov" style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", top: 0, left: 0 }}></video>
+							<video className="elementor-background-video-hosted" autoPlay muted playsInline loop preload="none" src="/video/banner-dreivepneu-toulouse.mov" style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", top: 0, left: 0 }}></video>
 					</div>
 					<div className="e-con-inner">
 					<div className="elementor-element elementor-element-d508afc e-con-full e-flex e-con e-child" data-id="d508afc" data-element_type="container">

@@ -230,7 +230,7 @@ export default function TrustIndexWidget() {
                 <div key={review.id} style={{ flex: `0 0 calc((100% - ${(cardsToShow - 1) * 20}px) / ${cardsToShow})` }}>
                   <div className="review-card">
                     <div className="review-header">
-                      <img src={review.avatar} alt={review.name} className="review-avatar" />
+                      <img src={review.avatar} alt={review.name} className="review-avatar" loading="lazy" />
                       <div className="review-author">
                         <span className="review-name">{review.name}</span>
                         <span className="review-date">{review.date}</span>
