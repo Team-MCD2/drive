@@ -5,6 +5,13 @@ import Footer from "../components/Footer";
 export default function Contact() {
   useEffect(() => {
     document.body.className = "wp-singular page-template-default page page-id-649 wp-custom-logo wp-theme-astra ast-desktop ast-page-builder-template ast-no-sidebar astra-4.8.10 ast-single-post ast-inherit-site-logo-transparent ast-theme-transparent-header ast-hfb-header elementor-default elementor-kit-1129 elementor-page elementor-page-649       e--ua-blink e--ua-chrome e--ua-webkit";
+    
+    // Le SDK attend l'événement DOMContentLoaded pour s'attacher au formulaire.
+    // Comme nous sommes dans une Single Page App (React), on doit déclencher cet événement manuellement après le rendu.
+    setTimeout(() => {
+      document.dispatchEvent(new Event("DOMContentLoaded", { bubbles: true, cancelable: true }));
+    }, 100);
+
     return () => { document.body.className = ""; };
   }, []);
 
@@ -58,11 +65,49 @@ export default function Contact() {
 		<div className="elementor-element elementor-element-ad174c8 e-con-full e-flex e-con e-child" data-id="ad174c8" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 				<div className="elementor-element elementor-element-837b137 elementor-widget elementor-widget-html" data-id="837b137" data-element_type="widget" data-widget_type="html.default">
 				<div className="elementor-widget-container">
-					<iframe id="JotFormIFrame-250485695323362" title="FORMULAIRE DRIVE PNEU" onload="window.parent.scrollTo(0,0)" allowtransparency="true" allow="geolocation; microphone; camera; fullscreen" src="https://form.jotform.com/250485695323362?isIframeEmbed=1&amp;parentURL=https%3A%2F%2Fdrivepneu.fr%2Fcontact%2F" frameborder="0" style={{ minWidth: "100%", maxWidth: "100%", height: "693px", borderWidth: "medium", borderStyle: "none", borderColor: "currentcolor", borderImage: "initial" }} scrolling="no" data-jf-embed-src="https://form.jotform.com/250485695323362?isIframeEmbed=1&amp;parentURL=https%3A%2F%2Fdrivepneu.fr%2Fcontact%2F">
-    </iframe>
-    
-    
-    				</div>
+					<form data-api-form="drive" style={{ display: 'flex', flexDirection: 'column', gap: '15px', padding: '20px', backgroundColor: '#f9f9f9', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
+						<h2 style={{ marginBottom: '10px', fontSize: '24px', color: '#333' }}>Formulaire de contact</h2>
+						
+						<div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
+							<div style={{ flex: '1 1 45%' }}>
+								<label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Nom complet *</label>
+								<input type="text" name="nom" required style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
+							</div>
+							<div style={{ flex: '1 1 45%' }}>
+								<label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Téléphone *</label>
+								<input type="tel" name="telephone" required style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
+							</div>
+						</div>
+						
+						<div>
+							<label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Email *</label>
+							<input type="email" name="email" required style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
+						</div>
+
+						<div>
+							<label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Immatriculation du véhicule</label>
+							<input type="text" name="immatriculation" style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }} placeholder="Ex: AB-123-CD" />
+						</div>
+						
+						<div>
+							<label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Service souhaité</label>
+							<select name="service" style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ccc', backgroundColor: 'white' }}>
+								<option value="montage_pneus">Montage de pneus</option>
+								<option value="mecanique">Mécanique générale</option>
+								<option value="revision">Révision / Vidange</option>
+								<option value="autre">Autre demande</option>
+							</select>
+						</div>
+						
+						<div>
+							<label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Message *</label>
+							<textarea name="message" rows="5" required style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }}></textarea>
+						</div>
+						
+						<button type="submit" style={{ padding: '12px 20px', backgroundColor: '#CC1939', color: 'white', border: 'none', borderRadius: '4px', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer', marginTop: '10px' }}>
+							Envoyer ma demande
+						</button>
+					</form>				</div>
 				</div>
 				</div>
 		<div className="elementor-element elementor-element-781cf08 e-con-full e-flex e-con e-child" data-id="781cf08" data-element_type="container">
